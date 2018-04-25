@@ -18,7 +18,7 @@ public class MainShopPageTest extends BaseTest{
     }
 
     @Test
-    public void testAddYllowcardToShoppingCart() throws InterruptedException {
+    public void testAddYellowCardToShoppingCart() throws InterruptedException {
        Assert.assertEquals(
                new MainShopPage(driver)
                 .openMainShopPage()

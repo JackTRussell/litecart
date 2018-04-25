@@ -81,10 +81,9 @@ public class MainShopPage extends BasePage{
         campainProductYellowDuck.click();
         wait = new WebDriverWait(driver, 3);
         wait.until(ExpectedConditions.visibilityOf(frameWithDuck));
-        Select drpCountry = new Select(selectDuckSize);
-        drpCountry.selectByVisibleText("Small");
+        Select selectSize = new Select(selectDuckSize);
+        selectSize.selectByVisibleText("Small");
         addToCartButton.click();
-        Thread.sleep(3000);
         return this;
     }
 
