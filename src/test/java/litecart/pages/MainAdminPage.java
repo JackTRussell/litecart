@@ -8,11 +8,12 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class MainAdminPage {
+public class MainAdminPage extends BasePage{
 
     WebDriver driver;
 
     public MainAdminPage(WebDriver driver) {
+        super(driver);
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }

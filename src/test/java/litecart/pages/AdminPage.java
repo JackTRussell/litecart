@@ -1,5 +1,6 @@
 package litecart.pages;
 
+import litecart.tests.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,11 +9,11 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class AdminPage {
+public class AdminPage  extends BasePage{
 
-    WebDriver driver;
 
     public AdminPage(WebDriver driver) {
+        super(driver);
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
