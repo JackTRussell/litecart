@@ -66,7 +66,7 @@ public class MainShopPage extends BasePage{
 
 
     public MainShopPage openMainShopPage(){
-        driver.get("http://localhost/litecart/en/");
+        driver.get("http://localhost/Litecart/en/");
         return this;
     }
 
