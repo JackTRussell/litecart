@@ -16,7 +16,7 @@ public class AddUser extends BasePage{
     @FindBy (css = "account.dropdown")
     private WebElement signIn;
 
-    @FindBy (linkText = "http://localhost/Litecart/en/create_account")
+    @FindBy (linkText = "http://localhost/litecart/en/create_account")
     private WebElement createNewAccount;
 
     @FindBy (name = "firstname")

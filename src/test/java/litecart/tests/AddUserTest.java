@@ -18,13 +18,15 @@ public class AddUserTest extends BaseTest{
     }
 
     @Test
-    public void testAddName() throws InterruptedException {
+    public void testAddName() {
         AddUser addUser = new AddUser(driver);
         addUser.createUser();
 
-        /*alertText = addUser.getAlertText();
-        Assert.assertEquals(alertText,"×" + "\n" +"You must provide a username");*/
+        Assert.assertEquals(addUser.createUser()," Your customer account has been created.");
 
 
+    }
+    public void open(){
+        driver.get("http://localhost/litecart/en/");
     }
 }
