@@ -19,26 +19,17 @@ public class AddUserTest extends BaseTest{
         setupBrowser();
     }
 
-    /*/@BeforeMethod
-    public openAddUser(){
-
-    }*/
-
-
-
     @Test
     public void testAddName() {
         AddUser addUser = new AddUser(driver);
         addUser.openAddUser();
-        addUser.createUser();
+        //addUser.createUser();
 
-        Assert.assertEquals(addUser.createUser()," Your customer account has been created.");
-
-
+        Assert.assertEquals(addUser.createUser(),"×\n" + "Your customer account has been created.");
     }
     @AfterClass
-    public void close(){
+    public void close() {
         closeBrowser();
     }
+    }
 
-}

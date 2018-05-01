@@ -30,11 +30,11 @@ public class AddUser extends BasePage{
     @FindBy (name = "lastname")
     private WebElement lastName;
 
-    @FindBy (name = "country_code")
+    /*@FindBy (name = "country_code")
     private WebElement country;
 
     @FindBy (name = "zone_code")
-    private WebElement zone;
+    private WebElement zone;*/
 
     @FindBy (xpath = "//*[@id=\"box-create-account\"]/form/div[6]/div[1]/div/input")
     private WebElement email;
@@ -51,6 +51,9 @@ public class AddUser extends BasePage{
     @FindBy (css = ".fa.fa-user")
     private WebElement userName;
 
+    @FindBy (css = ".alert.alert-success")
+    private WebElement alertMessage;
+
     public AddUser openAddUser(){
         driver.get("http://localhost/litecart/en/");
         return this;
@@ -59,21 +62,19 @@ public class AddUser extends BasePage{
     public String createUser(){
         wait = new WebDriverWait(driver, 3);
         signIn.click();
-        wait = new WebDriverWait(driver, 3);
         createNewAccount.click();
         firstName.sendKeys("Username");
         lastName.sendKeys("UserLastname");
-        //country.sendKeys("United States");
-        //zone.sendKeys("Maryland");
         ((JavascriptExecutor)driver).executeScript("scroll(0,400)");
-        wait = new WebDriverWait(driver, 30);
+        //wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.visibilityOf(email));
-        email.sendKeys("qwertyr@om.com");
+        email.sendKeys("qweryt@ocm.com");
         password.sendKeys("Pa$$w0rd");
         confirmPassword.sendKeys("Pa$$w0rd");
         submitButton.click();
+        wait.until(ExpectedConditions.visibilityOf(alertMessage));
+        return alertMessage.getText();
 
-        return userName.getText();
     }
 
 
