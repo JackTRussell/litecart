@@ -13,5 +13,6 @@ public class BasePage {
     public BasePage(WebDriver driver) {
         this.driver = driver;
         this.wait = wait;
+        driver.manage().window().maximize();
     }
 }
