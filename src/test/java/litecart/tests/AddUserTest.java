@@ -26,6 +26,11 @@ public class AddUserTest extends BaseTest{
         //addUser.createUser();
 
         Assert.assertEquals(addUser.createUser(),"×\n" + "Your customer account has been created.");
+        addUser.logOut();
+        //addUser.logIn();
+        Assert.assertEquals(addUser.logIn(), "×\n" + "You are now logged in as Username UserLastname.");
+        //addUser.logOut();
+        Assert.assertEquals(addUser.logOut(), "×\n" + "You are now logged out.");
     }
     @AfterClass
     public void close() {
