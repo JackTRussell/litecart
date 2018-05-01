@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AddUser extends BasePage{
-    String email_adress = "tearsdown@ocm.com";
+    String email_adress = "tearsdown@gu.com";
     String password_key = "Pa$$w0rd";
     public AddUser(WebDriver driver) {
         super(driver);
@@ -66,6 +66,9 @@ public class AddUser extends BasePage{
     @FindBy (xpath = "//*[@id=\"default-menu\"]/ul[2]/li/ul/li[1]/form/div[3]/button")
     private WebElement signInButton;
 
+    @FindBy (css = ".alert.alert-danger")
+    private WebElement errorAlert;
+
     public AddUser openAddUser(){
         driver.get("http://localhost/litecart/en/");
         return this;
@@ -103,6 +106,22 @@ public class AddUser extends BasePage{
         password.sendKeys(password_key);
         signInButton.click();
         return alertMessage.getText();
+    }
+    public String sameUser(){
+        wait = new WebDriverWait(driver, 3);
+        signIn.click();
+        createNewAccount.click();
+        firstName.sendKeys("Username");
+        lastName.sendKeys("UserLastname");
+        //((JavascriptExecutor)driver).executeScript("scroll(0,400)");
+        //wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.visibilityOf(createEmail));
+        createEmail.sendKeys(email_adress);
+        createPassword.sendKeys(password_key);
+        confirmPassword.sendKeys(password_key);
+        submitButton.click();
+        wait.until(ExpectedConditions.visibilityOf(errorAlert));
+        return errorAlert.getText();
     }
 
 

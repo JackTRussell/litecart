@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 import java.net.MalformedURLException;
 
-public class AddUserTest extends BaseTest{
+public class AddUserTest extends BaseTest {
 
     public AddUserTest() throws MalformedURLException {
     }
@@ -32,9 +32,16 @@ public class AddUserTest extends BaseTest{
         //addUser.logOut();
         Assert.assertEquals(addUser.logOut(), "×\n" + "You are now logged out.");
     }
+    @Test
+    public void testSameUser(){
+         AddUser sameUser = new AddUser(driver);
+         Assert.assertEquals(sameUser.sameUser(), "×\n" + "The email address already exists in our customer database. Please login or select a different email address.");
+        }
+
     @AfterClass
     public void close() {
         closeBrowser();
     }
     }
+
 
