@@ -36,13 +36,13 @@ public class AddUser extends BasePage{
     @FindBy (name = "zone_code")
     private WebElement zone;
 
-    @FindBy (name = "email")
+    @FindBy (xpath = "//*[@id=\"box-create-account\"]/form/div[6]/div[1]/div/input")
     private WebElement email;
 
-    @FindBy (name = "password")
+    @FindBy (xpath = "//*[@id=\"box-create-account\"]/form/div[7]/div[1]/div/input")
     private WebElement password;
 
-    @FindBy (name = "confirm_password")
+    @FindBy (xpath = "//*[@id=\"box-create-account\"]/form/div[7]/div[2]/div/input")
     private WebElement confirmPassword;
 
     @FindBy (name = "create_account")
@@ -63,13 +63,12 @@ public class AddUser extends BasePage{
         createNewAccount.click();
         firstName.sendKeys("Username");
         lastName.sendKeys("UserLastname");
-        wait = new WebDriverWait(driver, 15);
-        country.clear();
-        country.sendKeys("United States");
-        zone.sendKeys("Alabama");
-        //((JavascriptExecutor)driver).executeScript("scroll(0,250");
+        //country.sendKeys("United States");
+        //zone.sendKeys("Maryland");
+        ((JavascriptExecutor)driver).executeScript("scroll(0,400)");
+        wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.visibilityOf(email));
-        email.sendKeys("qwerty@com.com");
+        email.sendKeys("qwertyr@com.com");
         password.sendKeys("Pa$$w0rd");
         confirmPassword.sendKeys("Pa$$w0rd");
         submitButton.click();
