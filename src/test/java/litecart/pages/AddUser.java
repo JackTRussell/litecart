@@ -68,7 +68,7 @@ public class AddUser extends BasePage{
         ((JavascriptExecutor)driver).executeScript("scroll(0,400)");
         wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.visibilityOf(email));
-        email.sendKeys("qwertyr@com.com");
+        email.sendKeys("qwertyr@om.com");
         password.sendKeys("Pa$$w0rd");
         confirmPassword.sendKeys("Pa$$w0rd");
         submitButton.click();

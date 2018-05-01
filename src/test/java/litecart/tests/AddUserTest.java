@@ -2,6 +2,7 @@ package litecart.tests;
 
 import litecart.pages.AddUser;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -34,6 +35,10 @@ public class AddUserTest extends BaseTest{
         Assert.assertEquals(addUser.createUser()," Your customer account has been created.");
 
 
+    }
+    @AfterClass
+    public void close(){
+        closeBrowser();
     }
 
 }
