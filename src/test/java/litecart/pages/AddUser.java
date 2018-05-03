@@ -8,29 +8,30 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class AddUser extends BasePage{
-    String email_adress = "tearsdown@gu.com";
+public class AddUser extends BasePage {
+    String email_adress = "trtc12e@gwr.com";
     String password_key = "Pa$$w0rd";
+
     public AddUser(WebDriver driver) {
         super(driver);
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy (css = ".fa.fa-user")
+    @FindBy(css = ".fa.fa-user")
     private WebElement signIn;
 
-    @FindBy (linkText = "New customers click here")
+    @FindBy(linkText = "New customers click here")
     private WebElement createNewAccount;
 
-    @FindBy (linkText = "Logout")
+    @FindBy(linkText = "Logout")
     private WebElement logout;
 
-    @FindBy (name = "firstname")
+    @FindBy(name = "firstname")
     private WebElement firstName;
 
 
-    @FindBy (name = "lastname")
+    @FindBy(name = "lastname")
     private WebElement lastName;
 
     /*@FindBy (name = "country_code")
@@ -39,51 +40,56 @@ public class AddUser extends BasePage{
     @FindBy (name = "zone_code")
     private WebElement zone;*/
 
-    @FindBy (xpath = "//*[@id=\"box-create-account\"]/form/div[6]/div[1]/div/input")
+    @FindBy(xpath = "//*[@id=\"box-create-account\"]/form/div[6]/div[1]/div/input")
     private WebElement createEmail;
 
-    @FindBy (xpath = "//*[@id=\"box-create-account\"]/form/div[7]/div[1]/div/input")
+    @FindBy(xpath = "//*[@id=\"box-create-account\"]/form/div[7]/div[1]/div/input")
     private WebElement createPassword;
 
-    @FindBy (xpath = "//*[@id=\"box-create-account\"]/form/div[7]/div[2]/div/input")
+    @FindBy(xpath = "//*[@id=\"box-create-account\"]/form/div[7]/div[2]/div/input")
     private WebElement confirmPassword;
 
-    @FindBy (name = "create_account")
+    @FindBy(name = "create_account")
     private WebElement submitButton;
 
-    @FindBy (css = ".fa.fa-user")
+    @FindBy(css = ".fa.fa-user")
     private WebElement userName;
 
-    @FindBy (css = ".alert.alert-success")
+    @FindBy(css = ".alert.alert-success")
     private WebElement alertMessage;
 
-    @FindBy (xpath = "//*[@id=\"default-menu\"]/ul[2]/li/ul/li[1]/form/div[1]/div/input")
+    @FindBy(xpath = "//*[@id=\"default-menu\"]/ul[2]/li/ul/li[1]/form/div[1]/div/input")
     private WebElement email;
 
-    @FindBy (xpath = "//*[@id=\"default-menu\"]/ul[2]/li/ul/li[1]/form/div[2]/div/input")
+    @FindBy(xpath = "//*[@id=\"default-menu\"]/ul[2]/li/ul/li[1]/form/div[2]/div/input")
     private WebElement password;
 
-    @FindBy (xpath = "//*[@id=\"default-menu\"]/ul[2]/li/ul/li[1]/form/div[3]/button")
+    @FindBy(xpath = "//*[@id=\"default-menu\"]/ul[2]/li/ul/li[1]/form/div[3]/button")
     private WebElement signInButton;
 
-    @FindBy (css = ".alert.alert-danger")
+    @FindBy(css = ".alert.alert-danger")
     private WebElement errorAlert;
 
-    public AddUser openAddUser(){
+    public AddUser openAddUser() {
         driver.get("http://localhost/litecart/en/");
         return this;
     }
 
-    public String createUser(){
-
+    public AddUser sighIn() {
         wait = new WebDriverWait(driver, 3);
         signIn.click();
+        signInButton.click();
+        return this;
+    }
+
+    public String createUser() {
+        wait = new WebDriverWait(driver, 3);
+        signIn.click();
+        signInButton.click();
         createNewAccount.click();
         firstName.sendKeys("Username");
         lastName.sendKeys("UserLastname");
-        ((JavascriptExecutor)driver).executeScript("scroll(0,400)");
-        //wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.visibilityOf(createEmail));
+        //wait.until(ExpectedConditions.visibilityOf(createEmail));
         createEmail.sendKeys(email_adress);
         createPassword.sendKeys(password_key);
         confirmPassword.sendKeys(password_key);
@@ -92,30 +98,32 @@ public class AddUser extends BasePage{
         return alertMessage.getText();
 
     }
-   public String logOut() {
-       wait = new WebDriverWait(driver, 10);
-       userName.click();
-       logout.click();
-       return alertMessage.getText();
-   }
 
-    public String logIn(){
+    public String logOut() {
+        wait = new WebDriverWait(driver, 10);
+        userName.click();
+        logout.click();
+        wait.until(ExpectedConditions.visibilityOf(alertMessage));
+        return alertMessage.getText();
+    }
+
+    public String logIn() {
         wait = new WebDriverWait(driver, 10);
         signIn.click();
         email.sendKeys(email_adress);
         password.sendKeys(password_key);
         signInButton.click();
+        wait.until(ExpectedConditions.visibilityOf(alertMessage));
         return alertMessage.getText();
     }
-    public String sameUser(){
+
+    public String sameUser() {
         wait = new WebDriverWait(driver, 3);
         signIn.click();
         createNewAccount.click();
         firstName.sendKeys("Username");
         lastName.sendKeys("UserLastname");
-        //((JavascriptExecutor)driver).executeScript("scroll(0,400)");
-        //wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.visibilityOf(createEmail));
+        //wait.until(ExpectedConditions.visibilityOf(createEmail));
         createEmail.sendKeys(email_adress);
         createPassword.sendKeys(password_key);
         confirmPassword.sendKeys(password_key);
@@ -124,5 +132,15 @@ public class AddUser extends BasePage{
         return errorAlert.getText();
     }
 
+    public String invalidLogIn() {
+        wait = new WebDriverWait(driver, 10);
+        signIn.click();
+        email.sendKeys(email_adress + "erty");
+        password.sendKeys(password_key + "fgh");
+        signInButton.click();
+        wait.until(ExpectedConditions.visibilityOf(alertMessage));
+        return alertMessage.getText();
 
+
+    }
 }
