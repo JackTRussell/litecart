@@ -11,7 +11,7 @@ public class AddUserTest extends BaseTest {
     public AddUserTest() throws MalformedURLException {
     }
 
-    @BeforeTest
+    @BeforeClass
     public void setup() throws MalformedURLException {
         setupBrowser();
     }
@@ -24,9 +24,7 @@ public class AddUserTest extends BaseTest {
 
         Assert.assertEquals(addUser.createUser(),"×\n" + "Your customer account has been created.");
         addUser.logOut();
-        Assert.assertEquals(addUser.logIn(), "×\n" + "You are now logged in as Username UserLastname.");
-        //addUser.logOut();
-        Assert.assertEquals(addUser.logOut(), "×\n" + "You are now logged out.");
+
     }
     @Test
     public void testLoginLogout(){
@@ -41,7 +39,7 @@ public class AddUserTest extends BaseTest {
      @Test
      public void testInvalidUser(){
         AddUser invalidUser = new AddUser(driver);
-        Assert.assertEquals(invalidUser.invalidLogIn(), "×\n" + " Wrong password or the account does not exist");
+        Assert.assertEquals(invalidUser.invalidLogIn(), "×\n" +"Wrong password or the account does not exist");
      }
 
     @Test
@@ -52,7 +50,7 @@ public class AddUserTest extends BaseTest {
 
 
 
-    @AfterTest
+    @AfterClass
     public void close() {
         closeBrowser();
     }

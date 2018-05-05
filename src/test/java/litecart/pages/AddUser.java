@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AddUser extends BasePage {
-    String email_adress = "tutc46@gwr.com";
+    String email_adress = "tutc436@gwr.com";
     String password_key = "Pa$$w0rd";
 
     public AddUser(WebDriver driver) {
@@ -140,8 +140,8 @@ public class AddUser extends BasePage {
         email.sendKeys(email_adress + "erty");
         password.sendKeys(password_key + "fgh");
         signInButton.click();
-        wait.until(ExpectedConditions.visibilityOf(alertMessage));
-        return alertMessage.getText();
+        wait.until(ExpectedConditions.visibilityOf(errorAlert));
+        return errorAlert.getText();
 
 
     }
