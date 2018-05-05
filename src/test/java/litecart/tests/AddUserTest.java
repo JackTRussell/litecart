@@ -2,10 +2,7 @@ package litecart.tests;
 
 import litecart.pages.AddUser;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.net.MalformedURLException;
 
@@ -14,7 +11,7 @@ public class AddUserTest extends BaseTest {
     public AddUserTest() throws MalformedURLException {
     }
 
-    @BeforeClass
+    @BeforeTest
     public void setup() throws MalformedURLException {
         setupBrowser();
     }
@@ -27,7 +24,9 @@ public class AddUserTest extends BaseTest {
 
         Assert.assertEquals(addUser.createUser(),"×\n" + "Your customer account has been created.");
         addUser.logOut();
-
+        Assert.assertEquals(addUser.logIn(), "×\n" + "You are now logged in as Username UserLastname.");
+        //addUser.logOut();
+        Assert.assertEquals(addUser.logOut(), "×\n" + "You are now logged out.");
     }
     @Test
     public void testLoginLogout(){
@@ -36,6 +35,7 @@ public class AddUserTest extends BaseTest {
         Assert.assertEquals(inOut.logIn(), "×\n" + "You are now logged in as Username UserLastname.");
         //addUser.logOut();
         Assert.assertEquals(inOut.logOut(), "×\n" + "You are now logged out.");
+
     }
 
      @Test
@@ -52,7 +52,7 @@ public class AddUserTest extends BaseTest {
 
 
 
-    @AfterClass
+    @AfterTest
     public void close() {
         closeBrowser();
     }

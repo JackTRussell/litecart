@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AddUser extends BasePage {
-    String email_adress = "trtc12e@gwr.com";
+    String email_adress = "tutc46@gwr.com";
     String password_key = "Pa$$w0rd";
 
     public AddUser(WebDriver driver) {
@@ -18,7 +18,7 @@ public class AddUser extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css = ".fa.fa-user")
+    @FindBy(xpath = "//*[@id=\"default-menu\"]/ul[2]/li/a/i")
     private WebElement signIn;
 
     @FindBy(linkText = "New customers click here")
@@ -110,6 +110,7 @@ public class AddUser extends BasePage {
     public String logIn() {
         wait = new WebDriverWait(driver, 10);
         signIn.click();
+        email.clear();
         email.sendKeys(email_adress);
         password.sendKeys(password_key);
         signInButton.click();
@@ -118,7 +119,7 @@ public class AddUser extends BasePage {
     }
 
     public String sameUser() {
-        wait = new WebDriverWait(driver, 3);
+        wait = new WebDriverWait(driver, 15);
         signIn.click();
         createNewAccount.click();
         firstName.sendKeys("Username");
@@ -135,6 +136,7 @@ public class AddUser extends BasePage {
     public String invalidLogIn() {
         wait = new WebDriverWait(driver, 10);
         signIn.click();
+        email.clear();
         email.sendKeys(email_adress + "erty");
         password.sendKeys(password_key + "fgh");
         signInButton.click();
