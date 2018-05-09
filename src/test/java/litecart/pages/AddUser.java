@@ -9,8 +9,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AddUser extends BasePage {
-    String email_adress = "tutc436@gwr.com";
-    String password_key = "Pa$$w0rd";
+    /*String email_adress = "tugfbdtc436@gwlr.com";
+    String password_key = "Pa$$w0rd";*/
 
     public AddUser(WebDriver driver) {
         super(driver);
@@ -34,12 +34,6 @@ public class AddUser extends BasePage {
     @FindBy(name = "lastname")
     private WebElement lastName;
 
-    /*@FindBy (name = "country_code")
-    private WebElement country;
-
-    @FindBy (name = "zone_code")
-    private WebElement zone;*/
-
     @FindBy(xpath = "//*[@id=\"box-create-account\"]/form/div[6]/div[1]/div/input")
     private WebElement createEmail;
 
@@ -55,7 +49,7 @@ public class AddUser extends BasePage {
     @FindBy(css = ".fa.fa-user")
     private WebElement userName;
 
-    @FindBy(css = ".alert.alert-success")
+    @FindBy(css = ".alert")
     private WebElement alertMessage;
 
     @FindBy(xpath = "//*[@id=\"default-menu\"]/ul[2]/li/ul/li[1]/form/div[1]/div/input")
@@ -67,8 +61,8 @@ public class AddUser extends BasePage {
     @FindBy(xpath = "//*[@id=\"default-menu\"]/ul[2]/li/ul/li[1]/form/div[3]/button")
     private WebElement signInButton;
 
-    @FindBy(css = ".alert.alert-danger")
-    private WebElement errorAlert;
+    /*@FindBy(css = ".alert.alert-danger")
+    private WebElement errorAlert;*/
 
     public AddUser openAddUser() {
         driver.get("http://localhost/litecart/en/");
@@ -82,14 +76,13 @@ public class AddUser extends BasePage {
         return this;
     }
 
-    public String createUser() {
+    public String createUser(String email_adress, String password_key) {
         wait = new WebDriverWait(driver, 3);
         signIn.click();
         signInButton.click();
         createNewAccount.click();
         firstName.sendKeys("Username");
         lastName.sendKeys("UserLastname");
-        //wait.until(ExpectedConditions.visibilityOf(createEmail));
         createEmail.sendKeys(email_adress);
         createPassword.sendKeys(password_key);
         confirmPassword.sendKeys(password_key);
@@ -107,7 +100,7 @@ public class AddUser extends BasePage {
         return alertMessage.getText();
     }
 
-    public String logIn() {
+    public String logIn(String email_adress, String password_key) {
         wait = new WebDriverWait(driver, 10);
         signIn.click();
         email.clear();
@@ -118,7 +111,7 @@ public class AddUser extends BasePage {
         return alertMessage.getText();
     }
 
-    public String sameUser() {
+    /*public String sameUser() {
         wait = new WebDriverWait(driver, 15);
         signIn.click();
         createNewAccount.click();
@@ -141,8 +134,8 @@ public class AddUser extends BasePage {
         password.sendKeys(password_key + "fgh");
         signInButton.click();
         wait.until(ExpectedConditions.visibilityOf(errorAlert));
-        return errorAlert.getText();
+        return errorAlert.getText();*/
 
 
     }
-}
+

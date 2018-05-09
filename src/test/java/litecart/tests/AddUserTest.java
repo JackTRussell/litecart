@@ -22,7 +22,7 @@ public class AddUserTest extends BaseTest {
         addUser.openAddUser();
         //addUser.createUser();
 
-        Assert.assertEquals(addUser.createUser(),"×\n" + "Your customer account has been created.");
+        Assert.assertEquals(addUser.createUser("qwerty987456@edrtfy.vh", "12345678"),"×\n" + "Your customer account has been created.");
         addUser.logOut();
 
     }
@@ -30,7 +30,7 @@ public class AddUserTest extends BaseTest {
     public void testLoginLogout(){
         AddUser inOut = new AddUser(driver);
         //addUser.logIn();
-        Assert.assertEquals(inOut.logIn(), "×\n" + "You are now logged in as Username UserLastname.");
+        Assert.assertEquals(inOut.logIn("tutc436@gwlr.com", "Pa$$w0rd"), "×\n" + "You are now logged in as Username UserLastname.");
         //addUser.logOut();
         Assert.assertEquals(inOut.logOut(), "×\n" + "You are now logged out.");
 
@@ -39,13 +39,13 @@ public class AddUserTest extends BaseTest {
      @Test
      public void testInvalidUser(){
         AddUser invalidUser = new AddUser(driver);
-        Assert.assertEquals(invalidUser.invalidLogIn(), "×\n" +"Wrong password or the account does not exist");
+        Assert.assertEquals(invalidUser.logIn("trdt@fhd.com", "jgjfdyt"), "×\n" +"Wrong password or the account does not exist");
      }
 
     @Test
     public void testSameUser(){
         AddUser sameUser = new AddUser(driver);
-        Assert.assertEquals(sameUser.sameUser(), "×\n" + "The email address already exists in our customer database. Please login or select a different email address.");
+        Assert.assertEquals(sameUser.createUser("tutc436@gwlr.com", "Pa$$w0rd"), "×\n" + "The email address already exists in our customer database. Please login or select a different email address.");
     }
 
 

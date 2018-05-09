@@ -51,9 +51,6 @@ public class TestLitecartAdmin extends BaseTest{
 
     }
 
-
-
-
     public void open(){
         driver.get("http://localhost/Litecart/admin");
     }
