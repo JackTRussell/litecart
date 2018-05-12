@@ -8,6 +8,14 @@ import java.net.MalformedURLException;
 
 public class AddUserTest extends BaseTest {
 
+    /*public class userDataProvider{
+        @DataProvider (name = "validUsersDataProvider")
+        public Object [][] validUsersDataProvider(){
+            return new Object [][]
+            {["qwerty987@ter.com"] ["password"]}
+        }
+    }*/
+
     public AddUserTest() throws MalformedURLException {
     }
 
