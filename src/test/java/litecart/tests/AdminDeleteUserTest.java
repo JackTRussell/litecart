@@ -19,7 +19,7 @@ public class AdminDeleteUserTest extends BaseTest {
         AdminDeleteUser adminDeleteUser = new AdminDeleteUser(driver);
         adminDeleteUser.openDeleteUser();
         adminDeleteUser.sighIn();
-        Assert.assertEquals(adminDeleteUser.deleteUser(), "×\n" + "Changes were saved successfully.");
+        Assert.assertEquals(adminDeleteUser.deleteUser(), "×\n" + "Changes saved successfully.");
     }
 
     @AfterClass
