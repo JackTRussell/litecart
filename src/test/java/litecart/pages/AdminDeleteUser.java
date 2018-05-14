@@ -6,19 +6,14 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.Keys;
 
 
 public class AdminDeleteUser  extends BasePage {
-    String mail_adress = "tearsdown@gu.com";
     public AdminDeleteUser(WebDriver driver) {
         super(driver);
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-
-    //@FindBy( name = mail_adress)
-    //private WebElement customers;
 
     @FindBy (xpath = "//*[@id=\"box-login\"]/form/div[1]/div[1]/div/input")
     private WebElement name;
@@ -29,7 +24,7 @@ public class AdminDeleteUser  extends BasePage {
     @FindBy (xpath = "//*[@id=\"box-login\"]/form/div[2]/button")
     private WebElement login;
 
-    @FindBy (linkText = "Customers")
+    @FindBy (xpath = "//*[contains(text(),(Customers)')]")
     private WebElement customer;
 
     @FindBy (css = ".fa.fa-pencil")
@@ -42,7 +37,7 @@ public class AdminDeleteUser  extends BasePage {
     private WebElement alertMessage;
 
     public AdminDeleteUser openDeleteUser() {
-        driver.get("http://localhost/litecart/admin/login.php");
+        driver.get("http://localhost/litecart/admin/?app=customers&doc=customers");
         return this;
     }
 
@@ -56,13 +51,15 @@ public class AdminDeleteUser  extends BasePage {
     }
 
     public String deleteUser() {
-        wait = new WebDriverWait(driver, 15);
-        wait.until(ExpectedConditions.visibilityOf(customer));
-        customer.click();
-        edit.click();
-        delete.click();
-        driver.switchTo().alert().accept();
-        return alertMessage.getText();
+        //for (int i =0; i<38; i++) {
+            wait = new WebDriverWait(driver, 15);
+            wait.until(ExpectedConditions.visibilityOf(edit));
+            edit.click();
+            delete.click();
+            driver.switchTo().alert().accept();
+       // }
+            return alertMessage.getText();
+
 
     }
 }
