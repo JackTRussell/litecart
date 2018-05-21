@@ -1,20 +1,13 @@
 package litecart.tests;
 
 import litecart.pages.AddUser;
+import litecart.util.Dataproviders;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.net.MalformedURLException;
 
 public class AddUserTest extends BaseTest {
-
-    /*public class userDataProvider{
-        @DataProvider (name = "validUsersDataProvider")
-        public Object [][] validUsersDataProvider(){
-            return new Object [][]
-            {["qwerty987@ter.com"] ["password"]}
-        }
-    }*/
 
     public AddUserTest() throws MalformedURLException {
     }
@@ -24,11 +17,11 @@ public class AddUserTest extends BaseTest {
         setupBrowser();
     }
 
-    @Test
+    @Test(dataProvider = "addUser", dataProviderClass = Dataproviders.class)
     public void testAddName() {
         AddUser addUser = new AddUser(driver);
         addUser.openAddUser();
-        Assert.assertEquals(addUser.createUser("qwerty987456@edrtfy.vh", "12345678"),"×\n" + "Your customer account has been created.");
+        Assert.assertEquals(addUser.createUser(String addUser.email_adress, String addUser.password_key),"×\n" + "Your customer account has been created.");
         addUser.logOut();
 
     }

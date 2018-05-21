@@ -9,8 +9,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AddUser extends BasePage {
-    /*String email_adress = "tugfbdtc436@gwlr.com";
-    String password_key = "Pa$$w0rd";*/
+    String email_adress = "tugfbdtc436@gwlr.com";
+    String password_key = "Pa$$w0rd";
 
     public AddUser(WebDriver driver) {
         super(driver);
