@@ -17,18 +17,18 @@ public class AddUserTest extends BaseTest {
         setupBrowser();
     }
 
-    @Test(dataProvider = "addUser", dataProviderClass = Dataproviders.class)
-    public void testAddName() {
+    @Test(dataProvider = "createUser", dataProviderClass = Dataproviders.class)
+    public void testAddName(String email_adress, String password_key) {
         AddUser addUser = new AddUser(driver);
         addUser.openAddUser();
-        Assert.assertEquals(addUser.createUser(String addUser.email_adress, String addUser.password_key),"×\n" + "Your customer account has been created.");
+        Assert.assertEquals(addUser.createUser(email_adress, password_key),"×\n" + "Your customer account has been created.");
         addUser.logOut();
 
     }
-    @Test
-    public void testLoginLogout(){
+    @Test(dataProvider = "createUser", dataProviderClass = Dataproviders.class)
+    public void testLoginLogout(String email_adress, String password_key){
         AddUser inOut = new AddUser(driver);
-        Assert.assertEquals(inOut.logIn("qwerty987456@edrtfy.vh", "12345678"), "×\n" + "You are now logged in as Username UserLastname.");
+        Assert.assertEquals(inOut.logIn(email_adress, password_key), "×\n" + "You are now logged in as Username UserLastname.");
         Assert.assertEquals(inOut.logOut(), "×\n" + "You are now logged out.");
 
     }
@@ -39,10 +39,10 @@ public class AddUserTest extends BaseTest {
         Assert.assertEquals(invalidUser.logIn("trdt@fhd.com", "jgjfdyt"), "×\n" +"Wrong password or the account does not exist");
      }
 
-    @Test
-    public void testSameUser(){
+    @Test(dataProvider = "createUser", dataProviderClass = Dataproviders.class)
+    public void testSameUser(String email_adress, String password_key){
         AddUser sameUser = new AddUser(driver);
-        Assert.assertEquals(sameUser.createUser("qwerty987456@edrtfy.vh", "Pa$$w0rd"), "×\n" + "The email address already exists in our customer database. Please login or select a different email address.");
+        Assert.assertEquals(sameUser.createUser(email_adress, password_key), "×\n" + "The email address already exists in our customer database. Please login or select a different email address.");
     }
 
 

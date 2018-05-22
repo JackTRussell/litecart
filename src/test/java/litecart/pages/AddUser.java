@@ -65,7 +65,7 @@ public class AddUser extends BasePage {
     private WebElement errorAlert;*/
 
     public AddUser openAddUser() {
-        driver.get("http://localhost/litecart/en/");
+        driver.get("http://localhost:1234/litecart/en/");
         return this;
     }
 

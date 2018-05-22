@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Iterator;
 
 public class Dataproviders {
-    @DataProvider(name =  "addUser")
+    @DataProvider(name =  "createUser")
     public Object[][] createData() {
         return new Object[][] {
                 {"qwerty@er.com", "Password"},
