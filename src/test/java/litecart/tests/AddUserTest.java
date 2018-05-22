@@ -17,7 +17,7 @@ public class AddUserTest extends BaseTest {
         setupBrowser();
     }
 
-    @Test(dataProvider = "createUser", dataProviderClass = Dataproviders.class)
+    @Test(dataProvider = "loginData", dataProviderClass = Dataproviders.class)
     public void testAddName(String email_adress, String password_key) {
         AddUser addUser = new AddUser(driver);
         addUser.openAddUser();
@@ -25,7 +25,7 @@ public class AddUserTest extends BaseTest {
         addUser.logOut();
 
     }
-    @Test(dataProvider = "createUser", dataProviderClass = Dataproviders.class)
+    @Test(dataProvider = "loginData", dataProviderClass = Dataproviders.class)
     public void testLoginLogout(String email_adress, String password_key){
         AddUser inOut = new AddUser(driver);
         Assert.assertEquals(inOut.logIn(email_adress, password_key), "×\n" + "You are now logged in as Username UserLastname.");
@@ -39,7 +39,7 @@ public class AddUserTest extends BaseTest {
         Assert.assertEquals(invalidUser.logIn("trdt@fhd.com", "jgjfdyt"), "×\n" +"Wrong password or the account does not exist");
      }
 
-    @Test(dataProvider = "createUser", dataProviderClass = Dataproviders.class)
+    @Test(dataProvider = "loginData", dataProviderClass = Dataproviders.class)
     public void testSameUser(String email_adress, String password_key){
         AddUser sameUser = new AddUser(driver);
         sameUser.openAddUser();
@@ -50,8 +50,7 @@ public class AddUserTest extends BaseTest {
 
     @AfterClass
     public void close() {
-        closeBrowser();
-//        driver.quit();
+        driver.quit();
     }
     }
 

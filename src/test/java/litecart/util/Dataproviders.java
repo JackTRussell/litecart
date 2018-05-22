@@ -25,10 +25,10 @@ public class Dataproviders {
     @DataProvider(name = "loginData")
     public Iterator<Object[]> passwordFileCheckedData() throws IOException{
         List<Object[]> list = new ArrayList<Object[]>();
-        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/test_data/login.csv")));
+        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/test_data/credentials.csv")));
         String line = reader.readLine();
         while (line != null){
-            String[] split = line.split(";");
+            String[] split = line.split(",");
             list.add(new Object[]{split[0], split[1]});
             line = reader.readLine();
         }

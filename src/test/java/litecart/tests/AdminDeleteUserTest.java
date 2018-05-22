@@ -24,7 +24,7 @@ public class AdminDeleteUserTest extends BaseTest {
 
     @AfterClass
     public void close() {
-        closeBrowser();
+        driver.quit();
     }
 }
 
