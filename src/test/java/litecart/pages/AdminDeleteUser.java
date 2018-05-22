@@ -25,7 +25,7 @@ public class AdminDeleteUser  extends BasePage {
     @FindBy (xpath = "//*[@id=\"box-login\"]/form/div[2]/button")
     private WebElement login;
 
-    @FindBy (xpath = "//*[contains(text(),(Customers)')]")
+    @FindBy (xpath = ".//*[@id='main']//td[4]/a")
     private WebElement customer;
 
     @FindBy (css = ".fa.fa-pencil")
@@ -52,16 +52,16 @@ public class AdminDeleteUser  extends BasePage {
     }
 
     public String deleteUser() {
-        while (edit != null){
+        while (customer != null) {
             wait = new WebDriverWait(driver, 15);
             wait.until(ExpectedConditions.visibilityOf(edit));
             edit.click();
             delete.click();
             driver.switchTo().alert().accept();
-        }
-        wait = new WebDriverWait(driver, 15);
-        wait.until(ExpectedConditions.visibilityOf(alertMessage));
+            wait = new WebDriverWait(driver, 15);
+            wait.until(ExpectedConditions.visibilityOf(alertMessage));
             return alertMessage.getText();
+        }
 
 
     }
