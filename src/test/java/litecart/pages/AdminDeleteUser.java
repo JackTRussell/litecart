@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -37,7 +38,7 @@ public class AdminDeleteUser  extends BasePage {
     private WebElement alertMessage;
 
     public AdminDeleteUser openDeleteUser() {
-        driver.get("http://localhost/litecart/admin/?app=customers&doc=customers");
+        driver.get("http://localhost:1234/litecart/admin/?app=customers&doc=customers");
         return this;
     }
 
@@ -51,13 +52,15 @@ public class AdminDeleteUser  extends BasePage {
     }
 
     public String deleteUser() {
-        //for (int i =0; i<38; i++) {
+        for (int i =0; i<5; i++) {
             wait = new WebDriverWait(driver, 15);
             wait.until(ExpectedConditions.visibilityOf(edit));
             edit.click();
             delete.click();
             driver.switchTo().alert().accept();
-       // }
+        }
+        wait = new WebDriverWait(driver, 15);
+        wait.until(ExpectedConditions.visibilityOf(alertMessage));
             return alertMessage.getText();
 
 

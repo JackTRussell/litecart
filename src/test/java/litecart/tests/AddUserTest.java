@@ -42,6 +42,7 @@ public class AddUserTest extends BaseTest {
     @Test(dataProvider = "createUser", dataProviderClass = Dataproviders.class)
     public void testSameUser(String email_adress, String password_key){
         AddUser sameUser = new AddUser(driver);
+        sameUser.openAddUser();
         Assert.assertEquals(sameUser.createUser(email_adress, password_key), "×\n" + "The email address already exists in our customer database. Please login or select a different email address.");
     }
 
@@ -50,6 +51,7 @@ public class AddUserTest extends BaseTest {
     @AfterClass
     public void close() {
         closeBrowser();
+//        driver.quit();
     }
     }
 
