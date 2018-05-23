@@ -58,10 +58,10 @@ public class AdminDeleteUser  extends BasePage {
             edit.click();
             delete.click();
             driver.switchTo().alert().accept();
-            wait = new WebDriverWait(driver, 15);
-            wait.until(ExpectedConditions.visibilityOf(alertMessage));
-            return alertMessage.getText();
         }
+        wait = new WebDriverWait(driver, 15);
+        wait.until(ExpectedConditions.visibilityOf(alertMessage));
+            return alertMessage.getText();
 
 
     }
