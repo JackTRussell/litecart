@@ -55,13 +55,15 @@ public class AdminDeleteUser  extends BasePage {
     }
 
     public String deleteUser() {
-        //for (int i =0; i<38; i++) {
+        for (int i =0; i<5; i++) {
+            wait = new WebDriverWait(driver, 15);
+            wait.until(ExpectedConditions.visibilityOf(edit));
+            edit.click();
+            delete.click();
+            driver.switchTo().alert().accept();
+         }
         wait = new WebDriverWait(driver, 15);
-        wait.until(ExpectedConditions.visibilityOf(edit));
-        edit.click();
-        delete.click();
-        driver.switchTo().alert().accept();
-        // }
+        wait.until(ExpectedConditions.visibilityOf(alertMessage));
         return alertMessage.getText();
 
 
