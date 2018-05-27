@@ -1,6 +1,6 @@
 package litecart.tests;
 
-import litecart.pages.AdminDeleteUser;
+import litecart.pages.AdminCustomerPage;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -16,7 +16,7 @@ public class AdminDeleteUserTest extends BaseTest {
     }
     @Test
     public void testDeleteUser(){
-        AdminDeleteUser adminDeleteUser = new AdminDeleteUser(driver);
+        AdminCustomerPage adminDeleteUser = new AdminCustomerPage(driver);
         adminDeleteUser.openDeleteUser();
         adminDeleteUser.sighIn();
         Assert.assertEquals(adminDeleteUser.deleteUser(), "×\n" + "Changes saved successfully");

@@ -1,6 +1,7 @@
 package litecart.tests;
 
-import litecart.pages.AddUser;
+import litecart.pages.CreateAccountPage;
+import litecart.pages.MainPage;
 import litecart.util.Dataproviders;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -19,15 +20,16 @@ public class AddUserTest extends BaseTest {
 
     @Test(dataProvider = "loginData", dataProviderClass = Dataproviders.class)
     public void testAddName(String email_adress, String password_key) {
-        AddUser addUser = new AddUser(driver);
-        addUser.openAddUser();
+        MainPage signIn = new MainPage(driver);
+        signIn.openAddUser();
+        CreateAccountPage addUser = new CreateAccountPage(driver);
         Assert.assertEquals(addUser.createUser(email_adress, password_key),"×\n" + "Your customer account has been created.");
-        addUser.logOut();
+        signIn.logOut();
 
     }
     @Test(dataProvider = "loginData", dataProviderClass = Dataproviders.class)
     public void testLoginLogout(String email_adress, String password_key){
-        AddUser inOut = new AddUser(driver);
+        MainPage inOut = new MainPage(driver);
         Assert.assertEquals(inOut.logIn(email_adress, password_key), "×\n" + "You are now logged in as Username UserLastname.");
         Assert.assertEquals(inOut.logOut(), "×\n" + "You are now logged out.");
 
@@ -35,23 +37,23 @@ public class AddUserTest extends BaseTest {
 
      @Test
      public void testInvalidUser(){
-        AddUser invalidUser = new AddUser(driver);
+        MainPage invalidUser = new MainPage(driver);
+        invalidUser.openAddUser();
         Assert.assertEquals(invalidUser.logIn("trdt@fhd.com", "jgjfdyt"), "×\n" +"Wrong password or the account does not exist");
      }
 
     @Test(dataProvider = "loginData", dataProviderClass = Dataproviders.class)
     public void testSameUser(String email_adress, String password_key){
-        AddUser sameUser = new AddUser(driver);
+        MainPage sameUser = new MainPage(driver);
+        CreateAccountPage createUser = new CreateAccountPage(driver);
         sameUser.openAddUser();
-        Assert.assertEquals(sameUser.createUser(email_adress, password_key), "×\n" + "The email address already exists in our customer database. Please login or select a different email address.");
+        Assert.assertEquals(createUser.createUser(email_adress, password_key), "×\n" + "The email address already exists in our customer database. Please login or select a different email address.");
     }
 
 
 
-    @AfterClass
-    public void close() {
-        driver.quit();
-    }
+    //@AfterClass
+    //public void close() {driver.quit();    }
     }
 
 

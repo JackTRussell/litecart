@@ -19,9 +19,9 @@ public class BaseTest {
     public void setupBrowser() throws MalformedURLException {
 
         //new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), DesiredCapabilities.chrome());
-        //driver = new ChromeDriver();
+        driver = new ChromeDriver();
 
-        driver = new FirefoxDriver();
+        //driver = new FirefoxDriver();
 
     }
 

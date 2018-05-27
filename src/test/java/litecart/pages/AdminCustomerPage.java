@@ -4,13 +4,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-public class AdminDeleteUser  extends BasePage {
-    public AdminDeleteUser(WebDriver driver) {
+public class AdminCustomerPage extends BasePage {
+    public AdminCustomerPage(WebDriver driver) {
         super(driver);
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -37,12 +36,12 @@ public class AdminDeleteUser  extends BasePage {
     @FindBy(css = ".alert")
     private WebElement alertMessage;
 
-    public AdminDeleteUser openDeleteUser() {
-        driver.get("http://localhost:1234/litecart/admin/?app=customers&doc=customers");
+    public AdminCustomerPage openDeleteUser() {
+        driver.get("http://localhost/litecart/admin/?app=customers&doc=customers");
         return this;
     }
 
-    public AdminDeleteUser sighIn() {
+    public AdminCustomerPage sighIn() {
         wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOf(name));
         name.sendKeys("admin");
@@ -60,9 +59,9 @@ public class AdminDeleteUser  extends BasePage {
             driver.switchTo().alert().accept();
             wait = new WebDriverWait(driver, 15);
             wait.until(ExpectedConditions.visibilityOf(alertMessage));
-            return alertMessage.getText();
+
         }
 
-
+        return alertMessage.getText();
     }
 }
