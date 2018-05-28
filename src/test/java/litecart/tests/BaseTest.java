@@ -21,7 +21,7 @@ public class BaseTest {
         //new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), DesiredCapabilities.chrome());
         driver = new ChromeDriver();
 
-        driver = new FirefoxDriver();
+        //driver = new FirefoxDriver();
 
     }
 

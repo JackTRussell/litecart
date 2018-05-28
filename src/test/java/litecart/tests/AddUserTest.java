@@ -13,8 +13,8 @@ public class AddUserTest extends BaseTest {
 
     public AddUserTest() throws MalformedURLException {
     }
-    @BeforeTest
-    @Parameters("browser")
+    //@BeforeTest
+   /* @Parameters("browser")
     public void setup(String browser) throws Exception{
         if (browser.equalsIgnoreCase("firefox")){
             driver = new FirefoxDriver();
@@ -22,12 +22,12 @@ public class AddUserTest extends BaseTest {
         else if (browser.equalsIgnoreCase("chrome")){
             driver = new ChromeDriver();
         }
-    }
+    }*/
 
-    /*@BeforeClass
+    @BeforeClass
     public void setup() throws MalformedURLException {
         setupBrowser();
-    }*/
+    }
 
     @Test(dataProvider = "loginData", dataProviderClass = Dataproviders.class)
     public void testAddName(String email_adress, String password_key) {
