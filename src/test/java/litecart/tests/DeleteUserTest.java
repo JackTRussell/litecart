@@ -1,16 +1,14 @@
 package litecart.tests;
 
 
-import litecart.pages.AdminCustomerPage;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import litecart.pages.AdminDeleteUser;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.net.MalformedURLException;
 
-public class AdminDeleteUserTest extends BaseTest {
-    public AdminDeleteUserTest() throws MalformedURLException {
+public class DeleteUserTest extends BaseTest {
+    public DeleteUserTest() throws MalformedURLException {
     }
     /*@BeforeTest
     @Parameters("browser")
@@ -29,10 +27,18 @@ public class AdminDeleteUserTest extends BaseTest {
     }
     @Test
     public void testDeleteUser(){
-        AdminCustomerPage adminDeleteUser = new AdminCustomerPage(driver);
+        AdminDeleteUser adminDeleteUser = new AdminDeleteUser(driver);
         adminDeleteUser.openDeleteUser();
         adminDeleteUser.sighIn();
         Assert.assertEquals(adminDeleteUser.deleteUser(), "×\n" + "Changes saved successfully");
+    }
+
+    @Test
+    public void testCreateCustomer(){
+        AdminDeleteUser createCustomer = new AdminDeleteUser(driver);
+        createCustomer.openDeleteUser();
+        createCustomer.sighIn();
+        Assert.assertEquals(createCustomer.createUser("number7@user.com", "Password"), "×\n" + "Changes saved successfully");
     }
 
     @AfterClass

@@ -38,10 +38,17 @@ public class MainPage extends BasePage {
     private WebElement signInButton;
 
     public MainPage openAddUser() {
-        driver.get("http://localhost/litecart/en/");
+        driver.get("http://localhost:1234/litecart/en/");
         return this;
     }
-    public MainPage sighIn() {
+
+    public MainPage createAccount() {
+        wait = new WebDriverWait(driver, 5);
+        signIn.click();
+        createNewAccount.click();
+        return this;
+    };
+    public MainPage entrance() {
         wait = new WebDriverWait(driver, 3);
         signIn.click();
         signInButton.click();
@@ -65,6 +72,12 @@ public class MainPage extends BasePage {
         signInButton.click();
         wait.until(ExpectedConditions.visibilityOf(alertMessage));
         return alertMessage.getText();
+    }
+
+    public String logInEmpty(){
+        signIn.click();
+        signInButton.click();
+        return driver.getCurrentUrl();
     }
 
 }

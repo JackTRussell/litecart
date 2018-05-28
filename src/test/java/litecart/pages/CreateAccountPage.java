@@ -4,8 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.Keys;
 
 public class CreateAccountPage extends BasePage {
     String email_adress = "tugfbdtc436@gwlr.com";
@@ -35,13 +35,8 @@ public class CreateAccountPage extends BasePage {
     @FindBy(name = "create_account")
     private WebElement submitButton;
 
-
-
     public CreateAccountPage createUser(String email_adress, String password_key) {
         wait = new WebDriverWait(driver, 3);
-        //signIn.click();
-        //signInButton.click();
-        //createNewAccount.click();
         firstName.sendKeys("Username");
         lastName.sendKeys("UserLastname");
         createEmail.sendKeys(email_adress);
@@ -53,22 +48,28 @@ public class CreateAccountPage extends BasePage {
 
     }
 
-    /*public String sameUser() {
+    public String emptyUser() {
         wait = new WebDriverWait(driver, 15);
-        signIn.click();
-        createNewAccount.click();
+        submitButton.click();
+        //wait.until(ExpectedConditions.visibilityOf(alertMessage));
+        return driver.getCurrentUrl();
+    }
+
+    public CreateAccountPage createUserByEnter(String email_adress, String password_key) {
+        wait = new WebDriverWait(driver, 3);
         firstName.sendKeys("Username");
         lastName.sendKeys("UserLastname");
-        //wait.until(ExpectedConditions.visibilityOf(createEmail));
         createEmail.sendKeys(email_adress);
         createPassword.sendKeys(password_key);
         confirmPassword.sendKeys(password_key);
-        submitButton.click();
-        wait.until(ExpectedConditions.visibilityOf(errorAlert));
-        return errorAlert.getText();
+        confirmPassword.sendKeys(Keys.ENTER);
+        //wait.until(ExpectedConditions.visibilityOf(alertMessage));
+        return this;
+
     }
 
-    public String invalidLogIn() {
+
+    /*public String invalidLogIn() {
         wait = new WebDriverWait(driver, 10);
         signIn.click();
         email.clear();
