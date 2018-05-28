@@ -24,6 +24,9 @@ public class AdminCustomerPage extends BasePage {
     @FindBy (xpath = "//*[@id=\"box-login\"]/form/div[2]/button")
     private WebElement login;
 
+    @FindBy (xpath = ".//*[@id='main']//td[contains(text(), 'Customers: 0')]")
+    private WebElement customers;
+
     @FindBy (xpath = ".//*[@id='main']//td[4]/a")
     private WebElement customer;
 
@@ -37,7 +40,7 @@ public class AdminCustomerPage extends BasePage {
     private WebElement alertMessage;
 
     public AdminCustomerPage openDeleteUser() {
-        driver.get("http://localhost/litecart/admin/?app=customers&doc=customers");
+        driver.get("http://localhost:1234/litecart/admin/?app=customers&doc=customers");
         return this;
     }
 
@@ -51,7 +54,7 @@ public class AdminCustomerPage extends BasePage {
     }
 
     public String deleteUser() {
-        while (customer != null) {
+        for (int i =0; i<5; i++) {
             wait = new WebDriverWait(driver, 15);
             wait.until(ExpectedConditions.visibilityOf(edit));
             edit.click();
@@ -60,8 +63,11 @@ public class AdminCustomerPage extends BasePage {
             wait = new WebDriverWait(driver, 15);
             wait.until(ExpectedConditions.visibilityOf(alertMessage));
 
+         }
+        wait = new WebDriverWait(driver, 15);
+        wait.until(ExpectedConditions.visibilityOf(alertMessage));
+        return alertMessage.getText();
+
         }
 
-        return alertMessage.getText();
     }
-}
