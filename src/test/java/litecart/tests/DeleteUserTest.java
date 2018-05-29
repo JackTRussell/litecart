@@ -45,6 +45,12 @@ public class DeleteUserTest extends BaseTest {
         Assert.assertEquals(adminDeleteUser.deleteUser(), "×\n" + "Changes saved successfully");
     }
 
+    @Test
+    public void testDisableUser(){
+        AdminDeleteUser disableCustomer = new AdminDeleteUser(driver);
+        Assert.assertEquals(disableCustomer.disableUser(), true);
+    }
+
     @AfterClass
     public void close() {
         driver.quit();
