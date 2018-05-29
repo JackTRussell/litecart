@@ -10,14 +10,14 @@ import java.util.List;
 import java.util.Iterator;
 
 public class Dataproviders {
-    @DataProvider(name =  "createUser")
+    @DataProvider(name =  "createCustomer")
     public Object[][] createData() {
         return new Object[][] {
-                {"number1@user.com", "Password"},
-                {"number2@user.com", "Password"},
-                {"number3@user.com", "Password"},
-                {"number4@user.com", "Password"},
-                {"number5@user.com", "Password"},
+                {"number1@admin.com", "Password"},
+                {"number2@admin.com", "Password"},
+                {"number3@admin.com", "Password"},
+                {"number4@admin.com", "Password"},
+                {"number5@admin.com", "Password"},
         };
     }
 
@@ -25,7 +25,7 @@ public class Dataproviders {
     @DataProvider(name = "loginData")
     public Iterator<Object[]> passwordFileCheckedData() throws IOException{
         List<Object[]> list = new ArrayList<Object[]>();
-        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/test_data/credentials.csv")));
+        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/test_data/credentials_main.csv")));
         String line = reader.readLine();
         while (line != null){
             String[] split = line.split(",");

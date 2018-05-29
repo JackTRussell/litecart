@@ -73,7 +73,7 @@ public class AdminDeleteUser extends BasePage {
     }
 
     public String deleteUser() {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 11; i++) {
             wait = new WebDriverWait(driver, 15);
             wait.until(ExpectedConditions.visibilityOf(edit));
             edit.click();

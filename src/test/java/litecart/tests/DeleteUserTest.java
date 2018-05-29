@@ -2,6 +2,7 @@ package litecart.tests;
 
 
 import litecart.pages.AdminDeleteUser;
+import litecart.util.Dataproviders;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -24,14 +25,16 @@ public class DeleteUserTest extends BaseTest {
     @BeforeClass
     public void setup() throws MalformedURLException {
         setupBrowser();
+        AdminDeleteUser openAdminPage = new AdminDeleteUser(driver);
+        openAdminPage.openDeleteUser().sighIn();
     }
 
-    @Test
-    public void testCreateCustomer(){
+    @Test(dataProvider = "createCustomer", dataProviderClass = Dataproviders.class)
+    public void testCreateCustomer(String email_data, String password_key){
         AdminDeleteUser createCustomer = new AdminDeleteUser(driver);
-        createCustomer.openDeleteUser();
-        createCustomer.sighIn();
-        Assert.assertEquals(createCustomer.createUser("number6@user.com", "Password"), "×\n" + "Changes saved successfully");
+        //createCustomer.openDeleteUser();
+        //createCustomer.sighIn();
+        Assert.assertEquals(createCustomer.createUser(email_data, password_key), "×\n" + "Changes saved successfully");
     }
 
     @Test
