@@ -25,20 +25,21 @@ public class DeleteUserTest extends BaseTest {
     public void setup() throws MalformedURLException {
         setupBrowser();
     }
-    @Test
-    public void testDeleteUser(){
-        AdminDeleteUser adminDeleteUser = new AdminDeleteUser(driver);
-        adminDeleteUser.openDeleteUser();
-        adminDeleteUser.sighIn();
-        Assert.assertEquals(adminDeleteUser.deleteUser(), "×\n" + "Changes saved successfully");
-    }
 
     @Test
     public void testCreateCustomer(){
         AdminDeleteUser createCustomer = new AdminDeleteUser(driver);
         createCustomer.openDeleteUser();
         createCustomer.sighIn();
-        Assert.assertEquals(createCustomer.createUser("number7@user.com", "Password"), "×\n" + "Changes saved successfully");
+        Assert.assertEquals(createCustomer.createUser("number6@user.com", "Password"), "×\n" + "Changes saved successfully");
+    }
+
+    @Test
+    public void testDeleteUser(){
+        AdminDeleteUser adminDeleteUser = new AdminDeleteUser(driver);
+        //adminDeleteUser.openDeleteUser();
+        //adminDeleteUser.sighIn();
+        Assert.assertEquals(adminDeleteUser.deleteUser(), "×\n" + "Changes saved successfully");
     }
 
     @AfterClass
