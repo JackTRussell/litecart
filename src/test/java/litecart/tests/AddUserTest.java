@@ -26,12 +26,14 @@ public class AddUserTest extends BaseTest {
     @BeforeClass
     public void setup() throws MalformedURLException {
         setupBrowser();
+        MainPage logIn = new MainPage(driver);
+        logIn.openAddUser();
     }
 
     @Test(dataProvider = "loginData", dataProviderClass = Dataproviders.class)
     public void testAddName(String email_adress, String password_key) {
         MainPage signIn = new MainPage(driver);
-        signIn.openAddUser();
+        //signIn.openAddUser();
         signIn.createAccount();
         CreateAccountPage addUser = new CreateAccountPage(driver);
         addUser.createUser(email_adress, password_key);
@@ -41,7 +43,7 @@ public class AddUserTest extends BaseTest {
     @Test(dataProvider = "loginData", dataProviderClass = Dataproviders.class)
     public void testLoginLogout(String email_adress, String password_key){
         MainPage inOut = new MainPage(driver);
-        //inOut.openAddUser();
+        inOut.openAddUser();
         Assert.assertEquals(inOut.logIn(email_adress, password_key), "×\n" + "You are now logged in as Username UserLastname.");
         Assert.assertEquals(inOut.logOut(), "×\n" + "You are now logged out.");
 
@@ -77,6 +79,15 @@ public class AddUserTest extends BaseTest {
         MainPage  emptyUser = new MainPage(driver);
         emptyUser.openAddUser();
         Assert.assertEquals(emptyUser.logInEmpty(), "http://localhost:1234/litecart/en/");
+    }
+
+    @Test
+    public void testCreateUserWithInvalidEmail(){
+        MainPage signIn = new MainPage(driver);
+        //signIn.openAddUser();
+        signIn.createAccount();
+        CreateAccountPage addUser = new CreateAccountPage(driver);
+        Assert.assertEquals(addUser.createUserWithInvalidEmail("qwerty", "Password"),"http://localhost:1234/litecart/en/create_account");
     }
 
     @Test

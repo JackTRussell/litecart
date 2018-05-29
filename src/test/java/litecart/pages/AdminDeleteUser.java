@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.logging.XMLFormatter;
+
 
 public class AdminDeleteUser extends BasePage {
     public AdminDeleteUser(WebDriver driver) {
@@ -58,6 +60,18 @@ public class AdminDeleteUser extends BasePage {
     @FindBy(xpath = "//*[@id=\"main\"]/form/div/div[1]/p/button[1]")
     private WebElement saveButton;
 
+    @FindBy (xpath = "//*[@id=\"main\"]/form/table/tbody/tr[1]/td[1]/input")
+    private WebElement checkbox;
+
+    @FindBy (xpath = "//*[@id=\"main\"]/form/table/tbody/tr[1]/td[1]/input")
+    private WebElement status;
+
+    @FindBy (xpath = "//*[@id=\"main\"]/form/p/button[2]")
+    private WebElement disableButton;
+
+    @FindBy (xpath = ".//*[@id=\"main\"]//tr[@class='semi-transparent']")
+    private WebElement disabledRow;
+
     public AdminDeleteUser openDeleteUser() {
         driver.get("http://localhost:1234/litecart/admin/?app=customers&doc=customers");
         return this;
@@ -73,7 +87,7 @@ public class AdminDeleteUser extends BasePage {
     }
 
     public String deleteUser() {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 11; i++) {
             wait = new WebDriverWait(driver, 15);
             wait.until(ExpectedConditions.visibilityOf(edit));
             edit.click();
@@ -101,6 +115,14 @@ public class AdminDeleteUser extends BasePage {
         wait.until(ExpectedConditions.visibilityOf(alertMessage));
         return this;
 
+    }
+
+    public boolean disableUser(){
+        wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.visibilityOf(checkbox));
+        checkbox.click();
+        disableButton.click();;
+        return disabledRow.isDisplayed();
     }
 }
 
