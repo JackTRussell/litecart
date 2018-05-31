@@ -18,7 +18,7 @@ public class AdminDeleteUser extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//*[@id=\"box-login\"]/form/div[1]/div[1]/div/input")
+    @FindBy(xpath = "//*[@id='box-login']/form/div[1]/div[1]/div/input")
     private WebElement name;
 
     @FindBy(xpath = "//*[@id=\"box-login\"]/form/div[1]/div[2]/div/input")
@@ -27,10 +27,7 @@ public class AdminDeleteUser extends BasePage {
     @FindBy(xpath = "//*[@id=\"box-login\"]/form/div[2]/button")
     private WebElement login;
 
-    @FindBy(xpath = ".//*[@id='main']//td[contains(text(), 'Customers: 0')]")
-    private WebElement customers;
-
-    @FindBy(xpath = ".//*[@id='main']//td[4]/a")
+   @FindBy(xpath = ".//*[@id='main']//td[4]/a")
     private WebElement customer;
 
     @FindBy(css = ".fa.fa-pencil")
@@ -42,31 +39,28 @@ public class AdminDeleteUser extends BasePage {
     @FindBy(css = ".alert")
     private WebElement alertMessage;
 
-    @FindBy(xpath = ".//*[@id='main']/ul/li[2]/a")
+    @FindBy(xpath = ".//*[@id='main']//li[2]/a")
     private WebElement addCustomer;
 
-    @FindBy(xpath = "//*[@id=\"main\"]/form/div/div[1]/div[2]/div[1]/div/input")
+    @FindBy(name = "email")
     private WebElement email;
 
-    @FindBy(xpath = "//*[@id=\"main\"]/form/div/div[1]/div[4]/div[1]/input")
+    @FindBy(name = "firstname")
     private WebElement firstName;
 
-    @FindBy(xpath = "//*[@id=\"main\"]/form/div/div[1]/div[4]/div[2]/input")
+    @FindBy(name = "lastname")
     private WebElement lastName;
 
-    @FindBy(xpath = "//*[@id=\"main\"]/form/div/div[1]/div[8]/div[2]/div/input")
+    @FindBy(name = "new_password")
     private WebElement password;
 
-    @FindBy(xpath = "//*[@id=\"main\"]/form/div/div[1]/p/button[1]")
+    @FindBy(name = "save")
     private WebElement saveButton;
 
-    @FindBy (xpath = "//*[@id=\"main\"]/form/table/tbody/tr[1]/td[1]/input")
+    @FindBy (xpath = "//*[@id='main']//tr[1]/td[1]/input")
     private WebElement checkbox;
 
-    @FindBy (xpath = "//*[@id=\"main\"]/form/table/tbody/tr[1]/td[1]/input")
-    private WebElement status;
-
-    @FindBy (xpath = "//*[@id=\"main\"]/form/p/button[2]")
+    @FindBy (xpath = "//*[@id='main']//button[2]")
     private WebElement disableButton;
 
     @FindBy (xpath = ".//*[@id=\"main\"]//tr[@class='semi-transparent']")

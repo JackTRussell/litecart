@@ -16,16 +16,7 @@ public class BasePage {
     public BasePage(WebDriver driver) {
         this.driver = driver;
         this.wait = wait;
-        driver.manage().window().maximize();
     }
 
-    @Parameters("browser")
-    public void setup(String browser) throws Exception{
-        if (browser.equalsIgnoreCase("firefox")){
-            driver = new FirefoxDriver();
-        }
-        else if (browser.equalsIgnoreCase("chrome")){
-            driver = new ChromeDriver();
-        }
-    }
+
 }

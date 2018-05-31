@@ -13,8 +13,8 @@ public class MainShopPageTest extends BaseTest{
     }
 
     @BeforeClass
-    public void setup() throws MalformedURLException {
-        setupBrowser();
+    public void setup() throws Exception {
+        setupBrowser("Chrome");
     }
 
     @Test

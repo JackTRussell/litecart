@@ -24,8 +24,8 @@ public class AddUserTest extends BaseTest {
     }*/
 
     @BeforeClass
-    public void setup() throws MalformedURLException {
-        setupBrowser();
+    public void setup() throws Exception {
+        setupBrowser("Chrome");
         MainPage logIn = new MainPage(driver);
         logIn.openAddUser();
     }

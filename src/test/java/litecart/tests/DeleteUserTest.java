@@ -11,20 +11,10 @@ import java.net.MalformedURLException;
 public class DeleteUserTest extends BaseTest {
     public DeleteUserTest() throws MalformedURLException {
     }
-    /*@BeforeTest
-    @Parameters("browser")
-    public void setup(String browser) throws Exception{
-        if (browser.equalsIgnoreCase("firefox")){
-            driver = new FirefoxDriver();
-        }
-        else if (browser.equalsIgnoreCase("chrome")){
-            driver = new ChromeDriver();
-        }
-    }*/
 
     @BeforeClass
-    public void setup() throws MalformedURLException {
-        setupBrowser();
+    public void setup() throws Exception {
+        setupBrowser("Chrome");
         AdminDeleteUser openAdminPage = new AdminDeleteUser(driver);
         openAdminPage.openDeleteUser().sighIn();
     }
