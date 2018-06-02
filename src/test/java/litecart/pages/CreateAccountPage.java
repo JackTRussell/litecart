@@ -23,13 +23,13 @@ public class CreateAccountPage extends BasePage {
     @FindBy(name = "lastname")
     private WebElement lastName;
 
-    @FindBy(xpath = "//*[@id=\"box-create-account\"]/form/div[6]/div[1]/div/input")
+    @FindBy(xpath = "//*[@id='box-create-account']//div[6]/div[1]//input")
     private WebElement createEmail;
 
-    @FindBy(xpath = "//*[@id=\"box-create-account\"]/form/div[7]/div[1]/div/input")
+    @FindBy(xpath = "//*[@id='box-create-account']//div[7]/div[1]//input")
     private WebElement createPassword;
 
-    @FindBy(xpath = "//*[@id=\"box-create-account\"]/form/div[7]/div[2]/div/input")
+    @FindBy(name = "confirmed_password")
     private WebElement confirmPassword;
 
     @FindBy(name = "create_account")

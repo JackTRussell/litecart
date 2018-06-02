@@ -14,7 +14,7 @@ public class MainPage extends BasePage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-    @FindBy(xpath = "//*[@id=\"default-menu\"]/ul[2]/li/a/i")
+    @FindBy(css = ".fa.fa-user")
     private WebElement signIn;
 
     @FindBy(linkText = "New customers click here")
@@ -28,13 +28,13 @@ public class MainPage extends BasePage {
     @FindBy(css = ".alert")
     private WebElement alertMessage;
 
-    @FindBy(xpath = "//*[@id=\"default-menu\"]/ul[2]/li/ul/li[1]/form/div[1]/div/input")
+    @FindBy(name = "email")
     private WebElement email;
 
-    @FindBy(xpath = "//*[@id=\"default-menu\"]/ul[2]/li/ul/li[1]/form/div[2]/div/input")
+    @FindBy(name = "password")
     private WebElement password;
 
-    @FindBy(xpath = "//*[@id=\"default-menu\"]/ul[2]/li/ul/li[1]/form/div[3]/button")
+    @FindBy(name = "login")
     private WebElement signInButton;
 
     public MainPage openAddUser() {
