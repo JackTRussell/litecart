@@ -36,7 +36,8 @@ public class AddUserTest extends BaseTest {
         //signIn.openAddUser();
         signIn.createAccount();
         CreateAccountPage addUser = new CreateAccountPage(driver);
-        addUser.createUser(email_adress, password_key);
+        int i = (int) (Math.random()*10);
+        addUser.createUser(email_adress+i, password_key);
         signIn.logOut();
 
     }
