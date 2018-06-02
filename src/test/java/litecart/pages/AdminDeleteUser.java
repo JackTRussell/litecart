@@ -18,13 +18,13 @@ public class AdminDeleteUser extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//*[@id='box-login']/form/div[1]/div[1]/div/input")
+    @FindBy(name = "username")
     private WebElement name;
 
-    @FindBy(xpath = "//*[@id=\"box-login\"]/form/div[1]/div[2]/div/input")
+    @FindBy(name = "password")
     private WebElement adminPassword;
 
-    @FindBy(xpath = "//*[@id=\"box-login\"]/form/div[2]/button")
+    @FindBy(css = ".btn.btn-default")
     private WebElement login;
 
    @FindBy(xpath = ".//*[@id='main']//td[4]/a")
@@ -60,10 +60,10 @@ public class AdminDeleteUser extends BasePage {
     @FindBy (xpath = "//*[@id='main']//tr[1]/td[1]/input")
     private WebElement checkbox;
 
-    @FindBy (xpath = "//*[@id='main']//button[2]")
+    @FindBy (name = "disable")
     private WebElement disableButton;
 
-    @FindBy (xpath = ".//*[@id=\"main\"]//tr[@class='semi-transparent']")
+    @FindBy (xpath = ".//*[@id='main']//tr[@class='semi-transparent']")
     private WebElement disabledRow;
 
     public AdminDeleteUser openDeleteUser() {
@@ -81,7 +81,7 @@ public class AdminDeleteUser extends BasePage {
     }
 
     public String deleteUser() {
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < 6; i++) {
             wait = new WebDriverWait(driver, 15);
             wait.until(ExpectedConditions.visibilityOf(edit));
             edit.click();

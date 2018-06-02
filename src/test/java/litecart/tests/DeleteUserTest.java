@@ -38,6 +38,7 @@ public class DeleteUserTest extends BaseTest {
     @Test
     public void testDisableUser(){
         AdminDeleteUser disableCustomer = new AdminDeleteUser(driver);
+        disableCustomer.createUser("number8@admin.com", "Password");
         Assert.assertEquals(disableCustomer.disableUser(), true);
     }
 
