@@ -44,6 +44,7 @@ public class DeleteUserTest extends BaseTest {
         Assert.assertEquals(disableCustomer.disableUser(), true);
     }
 
+
     @AfterClass
     public void close() {
         driver.quit();
