@@ -17,6 +17,4 @@ public class BasePage {
         this.driver = driver;
         this.wait = wait;
     }
-
-
 }

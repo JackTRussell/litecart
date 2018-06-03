@@ -13,11 +13,11 @@ public class Dataproviders {
     @DataProvider(name =  "createCustomer")
     public Object[][] createData() {
         return new Object[][] {
-                {"number1@admin.com", "Password"},
-                {"number2@admin.com", "Password"},
-                {"number3@admin.com", "Password"},
-                {"number4@admin.com", "Password"},
-                {"number5@admin.com", "Password"},
+                {"number","@admin.com", "Password"},
+                {"number","@admin.com", "Password"},
+                {"number","@admin.com", "Password"},
+                {"number","@admin.com", "Password"},
+                {"number","@admin.com", "Password"},
         };
     }
 

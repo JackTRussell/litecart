@@ -20,11 +20,12 @@ public class DeleteUserTest extends BaseTest {
     }
 
     @Test(dataProvider = "createCustomer", dataProviderClass = Dataproviders.class)
-    public void testCreateCustomer(String email_data, String password_key){
+    public void testCreateCustomer(String email_data, String domain, String password_key){
         AdminDeleteUser createCustomer = new AdminDeleteUser(driver);
         //createCustomer.openDeleteUser();
         //createCustomer.sighIn();
-        Assert.assertEquals(createCustomer.createUser(email_data, password_key), "×\n" + "Changes saved successfully");
+        int rn = (int) (Math.random()*100);
+        Assert.assertEquals(createCustomer.createUser(email_data+rn+domain, password_key), "×\n" + "Changes saved successfully");
     }
 
     @Test
@@ -38,7 +39,8 @@ public class DeleteUserTest extends BaseTest {
     @Test
     public void testDisableUser(){
         AdminDeleteUser disableCustomer = new AdminDeleteUser(driver);
-        disableCustomer.createUser("number8@admin.com", "Password");
+        int rn = (int) (Math.random()*100);
+        disableCustomer.createUser("number"+rn+"@admin.com", "Password");
         Assert.assertEquals(disableCustomer.disableUser(), true);
     }
 

@@ -22,6 +22,7 @@ public class MainPage extends BasePage {
 
     @FindBy(linkText = "Logout")
     private WebElement logout;
+
     @FindBy(css = ".fa.fa-user")
     private WebElement userName;
 
