@@ -66,6 +66,9 @@ public class AdminDeleteUser extends BasePage {
     @FindBy (xpath = ".//*[@id='main']//tr[@class='semi-transparent']")
     private WebElement disabledRow;
 
+    @FindBy (css = ".fa.fa-sign-out.fa-lg")
+    private WebElement logout;
+
     public AdminDeleteUser openDeleteUser() {
         driver.get("http://localhost:1234/litecart/admin/?app=customers&doc=customers");
         return this;
@@ -81,7 +84,7 @@ public class AdminDeleteUser extends BasePage {
     }
 
     public String deleteUser() {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 74; i++) {
             wait = new WebDriverWait(driver, 15);
             wait.until(ExpectedConditions.visibilityOf(edit));
             edit.click();
@@ -117,6 +120,11 @@ public class AdminDeleteUser extends BasePage {
         checkbox.click();
         disableButton.click();;
         return disabledRow.isDisplayed();
+    }
+
+    public AdminDeleteUser logOut(){
+        logout.click();
+        return this;
     }
 }
 

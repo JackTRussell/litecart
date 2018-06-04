@@ -8,8 +8,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.Keys;
 
 public class CreateAccountPage extends BasePage {
-    String email_adress = "tugfbdtc436@gwlr.com";
-    String password_key = "Pa$$w0rd";
 
     public CreateAccountPage(WebDriver driver) {
         super(driver);

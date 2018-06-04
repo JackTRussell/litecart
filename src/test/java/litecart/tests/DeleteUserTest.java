@@ -15,9 +15,16 @@ public class DeleteUserTest extends BaseTest {
     @BeforeClass
     public void setup() throws Exception {
         setupBrowser("Chrome");
-        AdminDeleteUser openAdminPage = new AdminDeleteUser(driver);
-        openAdminPage.openDeleteUser().sighIn();
+        //AdminDeleteUser openAdminPage = new AdminDeleteUser(driver);
+        //openAdminPage.openDeleteUser().sighIn();
     }
+
+    @BeforeMethod
+    public void openPage(){
+        AdminDeleteUser logIn = new AdminDeleteUser(driver);
+        logIn.openDeleteUser().sighIn();
+    }
+
 
     @Test(dataProvider = "createCustomer", dataProviderClass = Dataproviders.class)
     public void testCreateCustomer(String email_data, String domain, String password_key){
@@ -42,6 +49,12 @@ public class DeleteUserTest extends BaseTest {
         int rn = (int) (Math.random()*100);
         disableCustomer.createUser("number"+rn+"@admin.com", "Password");
         Assert.assertEquals(disableCustomer.disableUser(), true);
+    }
+
+    @AfterMethod
+    public void logOut(){
+        AdminDeleteUser logOut = new AdminDeleteUser(driver);
+        logOut.logOut();
     }
 
 
