@@ -12,11 +12,10 @@ public class DeleteUserTest extends BaseTest {
     public DeleteUserTest() throws MalformedURLException {
     }
 
-    @BeforeClass
-    public void setup() throws Exception {
-        setupBrowser("Chrome");
-        //AdminDeleteUser openAdminPage = new AdminDeleteUser(driver);
-        //openAdminPage.openDeleteUser().sighIn();
+    @BeforeClass(alwaysRun = true)
+    @Parameters("browser")
+    public void init(@Optional("chrome") String browser){
+        setupBrowser(browser);
     }
 
     @BeforeMethod

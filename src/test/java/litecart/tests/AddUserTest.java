@@ -13,9 +13,10 @@ public class AddUserTest extends BaseTest {
     public AddUserTest() throws MalformedURLException {
     }
 
-    @BeforeClass
-    public void setup() throws Exception {
-        setupBrowser("Chrome");
+    @BeforeClass(alwaysRun = true)
+    @Parameters("browser")
+    public void init(@Optional("chrome") String browser){
+        setupBrowser(browser);
     }
 
     @BeforeMethod

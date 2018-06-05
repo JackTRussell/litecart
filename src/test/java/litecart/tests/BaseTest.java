@@ -1,5 +1,8 @@
 package litecart.tests;
 
+import litecart.pages.AdminDeleteUser;
+import litecart.pages.AdminPage;
+import litecart.pages.MainPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -9,26 +12,29 @@ import org.testng.annotations.Parameters;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-
 public class BaseTest {
+
     WebDriver driver;
 
 
-    public BaseTest() throws MalformedURLException {
+    public void open(){
+        AdminDeleteUser adminPage = new AdminDeleteUser(driver);
+        adminPage.openDeleteUser();
+        MainPage mainPage = new MainPage(driver);
+        mainPage.openAddUser();
     }
-
-    @Parameters("browser")
-    public void setupBrowser(String browser) throws Exception{
-        if (browser.equalsIgnoreCase("firefox")){
-            driver = new FirefoxDriver();
-        }
-        else if (browser.equalsIgnoreCase("chrome")){
+    public WebDriver setupBrowser(String browser){
+        if(browser.equals("chrome")) {
             driver = new ChromeDriver();
         }
-        driver.manage().window().maximize();
+        else if(browser.equals("firefox")) {
+            driver = new FirefoxDriver();
+        }
+        return driver;
     }
-
     public void closeBrowser(){
         driver.close();
     }
 }
+
+
