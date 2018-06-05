@@ -44,6 +44,7 @@ public class AddUserTest extends BaseTest {
         addUser.createUser("logout"+rn+"@user.com", "Password");
         Assert.assertEquals(inOut.logOut(), "×\n" + "You are now logged out.");
         Assert.assertEquals(inOut.logIn("logout"+rn+"@user.com", "Password"), "×\n" + "You are now logged in as Username UserLastname.");
+        inOut.logOut();
         inOut.openAddUser();
 
     }

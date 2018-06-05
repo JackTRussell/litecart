@@ -22,6 +22,7 @@ public class BaseTest {
         adminPage.openDeleteUser();
         MainPage mainPage = new MainPage(driver);
         mainPage.openAddUser();
+        driver.manage().window().maximize();
     }
     public WebDriver setupBrowser(String browser){
         if(browser.equals("chrome")) {

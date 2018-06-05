@@ -2,26 +2,14 @@
 
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="TestSuite" thread-count="4" parallel="tests" >
+<suite name="RegressionTestSuite" thread-count="4">
 
-    <test name="ChromeTest">
+    <test name="Regression">
 
-        <parameter name="browser" value="Chrome"/>
-
-        <classes>
-            <class name="AddUser"></class>
-
-            <class name="litecart.tests.DeleteUserTest"></class>
-
-        </classes>
-
-    </test>
-
-    <test name="FirefoxTest">
-
-        <parameter name="browser" value="Firefox" />
+        <parameter name="url" value="http://localhost:1234"/>
 
         <classes>
+
             <class name="litecart.tests.AddUserTest"></class>
 
             <class name="litecart.tests.DeleteUserTest"></class>
@@ -29,6 +17,5 @@
         </classes>
 
     </test>
-
 
 </suite>
