@@ -75,20 +75,6 @@ public class CreateAccountPage extends BasePage {
         confirmPassword.sendKeys(password_key);
         submitButton.click();
         return driver.getCurrentUrl();
-
     }
-
-
-    /*public String invalidLogIn() {
-        wait = new WebDriverWait(driver, 10);
-        signIn.click();
-        email.clear();
-        email.sendKeys(email_adress + "erty");
-        password.sendKeys(password_key + "fgh");
-        signInButton.click();
-        wait.until(ExpectedConditions.visibilityOf(errorAlert));
-        return errorAlert.getText();*/
-
-
     }
 

@@ -10,27 +10,27 @@
         <parameter name="url" value="http://localhost:1235"/>
 
         <classes>
-            <!--<class name="litecart.tests.AddUserTest"></class>-->
+            <class name="litecart.tests.AddUserTest"></class>
 
-            <class name="litecart.tests.DeleteUserTest"></class>
+            <class name="litecart.tests.AdminDeleteUserTest"></class>
 
         </classes>
 
     </test>
 
-    <test name="FirefoxTest">
+    <!--<test name="FirefoxTest">
 
         <parameter name="browser" value="Firefox" />
         <parameter name="url" value="http://localhost:1234"/>
 
         <classes>
-            <!--<class name="litecart.tests.AddUserTest"></class>-->
+            <class name="litecart.tests.AddUserTest"></class>
 
-            <class name="litecart.tests.DeleteUserTest"></class>
+            <class name="litecart.tests.AdminDeleteUserTest"></class>
 
         </classes>
 
-    </test>
+    </test>-->
 
 
 </suite>

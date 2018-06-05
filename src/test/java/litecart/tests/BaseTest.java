@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.Parameters;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -16,19 +17,18 @@ public class BaseTest {
     public BaseTest() throws MalformedURLException {
     }
 
-    public void setupBrowser() throws MalformedURLException {
-
-        //new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), DesiredCapabilities.chrome());
-        driver = new ChromeDriver();
-
-        //driver = new FirefoxDriver();
-
+    @Parameters("browser")
+    public void setupBrowser(String browser) throws Exception{
+        if (browser.equalsIgnoreCase("firefox")){
+            driver = new FirefoxDriver();
+        }
+        else if (browser.equalsIgnoreCase("chrome")){
+            driver = new ChromeDriver();
+        }
+        driver.manage().window().maximize();
     }
 
     public void closeBrowser(){
         driver.close();
     }
 }
-
-
-
