@@ -46,6 +46,7 @@ public class MainPage extends BasePage {
     public MainPage createAccount() {
         wait = new WebDriverWait(driver, 5);
         signIn.click();
+        wait.until(ExpectedConditions.visibilityOf(createNewAccount));
         createNewAccount.click();
         return this;
     };

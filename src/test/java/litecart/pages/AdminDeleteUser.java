@@ -27,7 +27,7 @@ public class AdminDeleteUser extends BasePage {
     @FindBy(css = ".btn.btn-default")
     private WebElement login;
 
-   @FindBy(xpath = ".//*[@id='main']//td[4]/a")
+    @FindBy(xpath = ".//*[@id='main']//td[4]/a")
     private WebElement customer;
 
     @FindBy(css = ".fa.fa-pencil")
