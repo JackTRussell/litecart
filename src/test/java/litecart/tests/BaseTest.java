@@ -15,15 +15,6 @@ import java.net.URL;
 public class BaseTest {
 
     WebDriver driver;
-
-
-    public void open(){
-        AdminDeleteUser adminPage = new AdminDeleteUser(driver);
-        adminPage.openDeleteUser();
-        MainPage mainPage = new MainPage(driver);
-        mainPage.openAddUser();
-        driver.manage().window().maximize();
-    }
     public WebDriver setupBrowser(String browser){
         if(browser.equals("chrome")) {
             driver = new ChromeDriver();
@@ -31,6 +22,7 @@ public class BaseTest {
         else if(browser.equals("firefox")) {
             driver = new FirefoxDriver();
         }
+        driver.manage().window().maximize();
         return driver;
     }
     public void closeBrowser(){

@@ -100,7 +100,7 @@ public class AdminDeleteUser extends BasePage {
 
     }
 
-    public AdminDeleteUser createUser(String email_adress, String password_key) {
+    public String createUser(String email_adress, String password_key) {
         wait = new WebDriverWait(driver, 3);
         wait.until(ExpectedConditions.visibilityOf(addCustomer));
         addCustomer.click();
@@ -110,7 +110,7 @@ public class AdminDeleteUser extends BasePage {
         password.sendKeys(password_key);
         saveButton.click();
         wait.until(ExpectedConditions.visibilityOf(alertMessage));
-        return this;
+        return alertMessage.getText();
 
     }
 

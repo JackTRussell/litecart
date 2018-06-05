@@ -31,8 +31,8 @@ public class DeleteUserTest extends BaseTest {
         //createCustomer.openDeleteUser();
         //createCustomer.sighIn();
         int rn = (int) (Math.random()*100);
-        //Assert.assertEquals(createCustomer.createUser(email_data+rn+domain, password_key), "×\n" + "Changes saved successfully");
-        createCustomer.createUser(email_data+rn+domain, password_key);
+        Assert.assertEquals(createCustomer.createUser(email_data+rn+domain, password_key), "×\n" + "Changes saved successfully");
+        //createCustomer.createUser(email_data+rn+domain, password_key);
     }
 
     @Test

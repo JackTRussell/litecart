@@ -2,13 +2,9 @@
 
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="SmokeTestSuite" thread-count="10">
+<suite name="SmokeTestSuite">
 
    <test name="Smoke">
-
-        <parameter name="browser" value="chrome"/>
-
-        <parameter name="url" value="http://localhost:1234"/>
 
         <classes>
 
