@@ -18,9 +18,9 @@
             </properties>
         </profile>
         <profile>
-            <id>smoke</id>
+            <id>AdminCustomerPage</id>
             <properties>
-                <suites>Smoke</suites>
+                <suites>AdminCustomerPage</suites>
             </properties>
         </profile>
 
