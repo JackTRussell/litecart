@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.Keys;
 
@@ -33,7 +34,10 @@ public class CreateAccountPage extends BasePage {
     @FindBy(name = "create_account")
     private WebElement submitButton;
 
-    public CreateAccountPage createUser(String email_adress, String password_key) {
+    @FindBy(css = ".alert")
+    private WebElement alertMessage;
+
+    public String createUser(String email_adress, String password_key) {
         wait = new WebDriverWait(driver, 3);
         firstName.sendKeys("Username");
         lastName.sendKeys("UserLastname");
@@ -41,8 +45,8 @@ public class CreateAccountPage extends BasePage {
         createPassword.sendKeys(password_key);
         confirmPassword.sendKeys(password_key);
         submitButton.click();
-        //wait.until(ExpectedConditions.visibilityOf(alertMessage));
-        return this;
+        wait.until(ExpectedConditions.visibilityOf(alertMessage));
+        return alertMessage.getText();
 
     }
 

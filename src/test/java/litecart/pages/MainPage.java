@@ -43,12 +43,12 @@ public class MainPage extends BasePage {
         return this;
     }
 
-    public String createAccount() {
+    public MainPage createAccount() {
         wait = new WebDriverWait(driver, 5);
         signIn.click();
         wait.until(ExpectedConditions.visibilityOf(createNewAccount));
         createNewAccount.click();
-        return alertMessage.getText();
+        return this;
     };
 
     public String logOut() {

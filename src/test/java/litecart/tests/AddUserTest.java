@@ -26,12 +26,12 @@ public class AddUserTest extends BaseTest {
     }
 
     @Test(dataProvider = "loginData", dataProviderClass = Dataproviders.class)
-    public void testAddName(String email_adress, String password_key) {
+    public void testAddName(String email_adress, String domain, String password_key) {
         MainPage signIn = new MainPage(driver);
         signIn.createAccount();
         CreateAccountPage addUser = new CreateAccountPage(driver);
         int rn = (int) (Math.random()*100);
-        addUser.createUser(email_adress+rn, password_key);
+        Assert.assertEquals(addUser.createUser(rn+email_adress+rn+domain, password_key), "×\n"+"Your customer account has been created.");
         signIn.logOut();
         signIn.openAddUser();
     }

@@ -15,9 +15,6 @@ public class Dataproviders {
         return new Object[][] {
                 {"number","@admin.com", "Password"},
                 {"number","@admin.com", "Password"},
-                {"number","@admin.com", "Password"},
-                {"number","@admin.com", "Password"},
-                {"number","@admin.com", "Password"},
         };
     }
 
@@ -29,7 +26,7 @@ public class Dataproviders {
         String line = reader.readLine();
         while (line != null){
             String[] split = line.split(",");
-            list.add(new Object[]{split[0], split[1]});
+            list.add(new Object[]{split[0], split[1], split[2]});
             line = reader.readLine();
         }
         return list.iterator();
