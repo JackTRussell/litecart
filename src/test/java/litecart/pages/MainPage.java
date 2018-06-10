@@ -14,8 +14,30 @@ public class MainPage extends BasePage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
+    @FindBy (css =".logotype")
+    public WebElement logo;
+
+    @FindBy (css = ".fa.fa-home")
+    private WebElement homeButton;
+
+    @FindBy (xpath = "//*[@id='default-menu']/ul[1]/li[2]/a")
+    private WebElement ruberDuckDropdown;
+
+    @FindBy (xpath = "//*[@id='default-menu']/ul[1]/li[3]/a")
+    private WebElement manufacturersDropdown;
+
+    @FindBy (xpath = "//*[@id='default-menu']/ul[1]/li[2]/ul/li/a")
+    private WebElement category;
+
+    @FindBy (xpath = "//*[@id='default-menu']/ul[1]/li[3]/ul/li/a")
+    private WebElement corpMenu;
+
     @FindBy(css = ".fa.fa-user")
     private WebElement signIn;
+
+    @FindBy (css = ".details")
+    private WebElement cartMenu;
 
     @FindBy(linkText = "New customers click here")
     private WebElement createNewAccount;
@@ -74,6 +96,30 @@ public class MainPage extends BasePage {
         signIn.click();
         signInButton.click();
         return driver.getCurrentUrl();
+    }
+
+    public String getMenuElement(){
+        ruberDuckDropdown.click();
+        return category.getText();
+    }
+
+    public String homeButton(){
+        homeButton.click();
+        return driver.getCurrentUrl();
+    }
+
+    public String manufactures(){
+        manufacturersDropdown.click();
+        return corpMenu.getText();
+    }
+
+    public String shoppingCart(){
+        cartMenu.click();
+        return driver.getCurrentUrl();
+    }
+
+    public Boolean logotype(){
+        return logo.isDisplayed();
     }
 
 }

@@ -8,9 +8,9 @@ import org.testng.annotations.*;
 
 import java.net.MalformedURLException;
 
-public class AddUserTest extends BaseTest {
+public class ShopUsersTest extends BaseTest {
 
-    public AddUserTest() throws MalformedURLException {
+    public ShopUsersTest() throws MalformedURLException {
     }
 
     @BeforeClass(alwaysRun = true)
@@ -36,16 +36,28 @@ public class AddUserTest extends BaseTest {
         signIn.openAddUser();
     }
     @Test
-    public void testLoginLogout(){
-        MainPage inOut = new MainPage(driver);
-        inOut.createAccount();
+    public void testLogin(){
+        MainPage logIn = new MainPage(driver);
+        logIn.createAccount();
+        int rn = (int) (Math.random()*100);
+        CreateAccountPage addUser = new CreateAccountPage(driver);
+        addUser.createUser("login"+rn+"@user.com", "Password");
+        logIn.logOut();
+        Assert.assertEquals(logIn.logIn("logout"+rn+"@user.com", "Password"), "×\n" + "You are now logged in as Username UserLastname.");
+        logIn.logOut();
+        logIn.openAddUser();
+
+    }
+
+    @Test
+    public void testLogout(){
+        MainPage logOut = new MainPage(driver);
+        logOut.createAccount();
         int rn = (int) (Math.random()*100);
         CreateAccountPage addUser = new CreateAccountPage(driver);
         addUser.createUser("logout"+rn+"@user.com", "Password");
-        Assert.assertEquals(inOut.logOut(), "×\n" + "You are now logged out.");
-        Assert.assertEquals(inOut.logIn("logout"+rn+"@user.com", "Password"), "×\n" + "You are now logged in as Username UserLastname.");
-        inOut.logOut();
-        inOut.openAddUser();
+        Assert.assertEquals(logOut.logOut(), "×\n" + "You are now logged out.");
+        logOut.openAddUser();
 
     }
 
@@ -108,6 +120,35 @@ public class AddUserTest extends BaseTest {
 
     }
 
+    @Test (groups = "gui")
+    public void checkCategory(){
+        MainPage checkCategory = new MainPage(driver);
+        Assert.assertEquals(checkCategory.getMenuElement(), "Subcategory");
+    }
+
+    @Test (groups = "gui")
+    public void checkHomeButton(){
+            MainPage checkHome = new MainPage(driver);
+            Assert.assertEquals(checkHome.homeButton(), "http://localhost:1234/litecart/en/");
+    }
+
+    @Test (groups = "gui")
+    public void checkManufactures(){
+        MainPage checkManufactures = new MainPage(driver);
+        Assert.assertEquals(checkManufactures.manufactures(), "ACME Corp.");
+    }
+
+    @Test (groups = "gui")
+    public void checkCart(){
+        MainPage checkCart = new MainPage(driver);
+        Assert.assertEquals(checkCart.shoppingCart(), "http://localhost:1234/litecart/en/checkout");
+    }
+
+    @Test (groups = "gui")
+    public void checkLogo(){
+        MainPage logoImg = new MainPage(driver);
+        Assert.assertTrue(logoImg.logotype());
+    }
 
    @AfterClass
     public void close() {

@@ -8,8 +8,8 @@ import org.testng.annotations.*;
 
 import java.net.MalformedURLException;
 
-public class DeleteUserTest extends BaseTest {
-    public DeleteUserTest() throws MalformedURLException {
+public class AdminCustomerTest extends BaseTest {
+    public AdminCustomerTest() throws MalformedURLException {
     }
 
     @BeforeClass(alwaysRun = true)
