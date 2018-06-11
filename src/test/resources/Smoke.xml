@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Smoke">
-    <test name="testRegression">
-        <parameter name="browser" value="chrome"></parameter>
+    <test name="smokeTestChrome">
+        <parameter name="browser" value="firefox"></parameter>
 
         <classes>
             <class name="litecart.tests.AdminCustomerTest"></class>
@@ -9,11 +9,11 @@
         </classes>
     </test>
 
-    <test name="regress">
+   <!--- <test name="smokeTestFirefox">
         <parameter name="browser" value="firefox"></parameter>
         <classes>
             <class name="litecart.tests.AdminCustomerTest"></class>
             <class name="litecart.tests.ShopUsersTest"></class>
         </classes>
-    </test>
+    </test>-->
 </suite>
