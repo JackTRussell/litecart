@@ -9,11 +9,11 @@
         </classes>
     </test>
 
-    <test name="smokeTestFirefox">
+   <!--- <test name="smokeTestFirefox">
         <parameter name="browser" value="firefox"></parameter>
         <classes>
             <class name="litecart.tests.AdminCustomerTest"></class>
             <class name="litecart.tests.ShopUsersTest"></class>
         </classes>
-    </test>
+    </test>-->
 </suite>
