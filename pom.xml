@@ -9,18 +9,18 @@
     <version>1.0-SNAPSHOT</version>
     <profiles>
         <profile>
-            <id>AddUser</id>
+            <id>regression</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suites>AddUser</suites>
+                <suites>Regression</suites>
             </properties>
         </profile>
         <profile>
-            <id>AdminCustomerPage</id>
+            <id>smoke</id>
             <properties>
-                <suites>AdminCustomerPage</suites>
+                <suites>Smoke</suites>
             </properties>
         </profile>
 

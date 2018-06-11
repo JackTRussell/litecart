@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Regression">
+    <test name="testRegression">
+        <parameter name="browser" value="chrome"></parameter>
+        <groups>
+            <define name="gui"></define>
+           <run>
+                <exclude name="gui"></exclude>
+           </run>
+        </groups>
+        <classes>
+            <class name="litecart.tests.AdminCustomerTest"></class>
+            <class name="litecart.tests.ShopUsersTest"></class>
+        </classes>
+    </test>
+
+</suite>
