@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Smoke">
     <test name="smokeTestChrome">
-        <parameter name="browser" value="chrome"></parameter>
+        <parameter name="browser" value="firefox"></parameter>
 
         <classes>
             <class name="litecart.tests.AdminCustomerTest"></class>
