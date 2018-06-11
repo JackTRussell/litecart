@@ -31,7 +31,8 @@ public class ShopUsersTest extends BaseTest {
         signIn.createAccount();
         CreateAccountPage addUser = new CreateAccountPage(driver);
         int rn = (int) (Math.random()*100);
-        Assert.assertEquals(addUser.createUser(rn+email_adress+rn+domain, password_key), "×\n" + "Your customer account has been created.");
+        Assert.assertEquals(addUser.createUser(rn+email_adress+rn+domain, password_key), "×\n" +
+                "Your customer account has been created.");
         signIn.logOut();
         signIn.openAddUser();
     }
