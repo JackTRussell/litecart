@@ -53,7 +53,6 @@ public class CreateAccountPage extends BasePage {
     public String emptyUser() {
         wait = new WebDriverWait(driver, 15);
         submitButton.click();
-        //wait.until(ExpectedConditions.visibilityOf(alertMessage));
         return driver.getCurrentUrl();
     }
 

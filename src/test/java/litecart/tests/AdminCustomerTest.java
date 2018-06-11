@@ -28,19 +28,14 @@ public class AdminCustomerTest extends BaseTest {
     @Test(dataProvider = "createCustomer", dataProviderClass = Dataproviders.class)
     public void testCreateCustomer(String email_data, String domain, String password_key){
         AdminDeleteUser createCustomer = new AdminDeleteUser(driver);
-        //createCustomer.openDeleteUser();
-        //createCustomer.sighIn();
         int rn = (int) (Math.random()*100);
-        Assert.assertEquals(createCustomer.createUser(email_data+rn+domain, password_key), "?\n" +"Changes saved successfully");
-        //createCustomer.createUser(email_data+rn+domain, password_key);
+        Assert.assertEquals(createCustomer.createUser(email_data+rn+domain, password_key), "×\n" +"Changes saved successfully");
     }
 
     @Test
     public void testDeleteUser(){
         AdminDeleteUser adminDeleteUser = new AdminDeleteUser(driver);
-        //adminDeleteUser.openDeleteUser();
-        //adminDeleteUser.sighIn();
-        Assert.assertEquals(adminDeleteUser.deleteUser(), "?\n" + "Changes saved successfully");
+        Assert.assertEquals(adminDeleteUser.deleteUser(), "×\n" + "Changes saved successfully");
     }
 
     @Test
