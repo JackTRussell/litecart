@@ -58,14 +58,14 @@ public class CreateAccountPage extends BasePage {
     }
 
     public CreateAccountPage createUserByEnter(String email_adress, String password_key) {
-        wait = new WebDriverWait(driver, 3);
+        wait = new WebDriverWait(driver, 15);
         firstName.sendKeys("Username");
         lastName.sendKeys("UserLastname");
         createEmail.sendKeys(email_adress);
         createPassword.sendKeys(password_key);
         confirmPassword.sendKeys(password_key);
         confirmPassword.sendKeys(Keys.ENTER);
-        //wait.until(ExpectedConditions.visibilityOf(alertMessage));
+        wait.until(ExpectedConditions.visibilityOf(alertMessage));
         return this;
 
     }
