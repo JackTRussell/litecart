@@ -31,7 +31,7 @@ public class AdminCustomerTest extends BaseTest {
         //createCustomer.openDeleteUser();
         //createCustomer.sighIn();
         int rn = (int) (Math.random()*100);
-        Assert.assertEquals(createCustomer.createUser(email_data+rn+domain, password_key), "×\n" + "Changes saved successfully");
+        Assert.assertEquals(createCustomer.createUser(email_data+rn+domain, password_key), "?\n" +"Changes saved successfully");
         //createCustomer.createUser(email_data+rn+domain, password_key);
     }
 
@@ -40,7 +40,7 @@ public class AdminCustomerTest extends BaseTest {
         AdminDeleteUser adminDeleteUser = new AdminDeleteUser(driver);
         //adminDeleteUser.openDeleteUser();
         //adminDeleteUser.sighIn();
-        Assert.assertEquals(adminDeleteUser.deleteUser(), "×\n" + "Changes saved successfully");
+        Assert.assertEquals(adminDeleteUser.deleteUser(), "?\n" + "Changes saved successfully");
     }
 
     @Test
