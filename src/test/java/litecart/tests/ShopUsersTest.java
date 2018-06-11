@@ -43,7 +43,7 @@ public class ShopUsersTest extends BaseTest {
         CreateAccountPage addUser = new CreateAccountPage(driver);
         addUser.createUser("login"+rn+"@user.com", "Password");
         logIn.logOut();
-        Assert.assertEquals(logIn.logIn("logout"+rn+"@user.com", "Password"), "×\n" + "You are now logged in as Username UserLastname.");
+        Assert.assertEquals(logIn.logIn("login"+rn+"@user.com", "Password"), "×\n" + "You are now logged in as Username UserLastname.");
         logIn.logOut();
         logIn.openAddUser();
 
