@@ -8,6 +8,8 @@ import org.testng.annotations.*;
 
 import java.net.MalformedURLException;
 
+import static java.lang.System.currentTimeMillis;
+
 public class AdminCustomerTest extends BaseTest {
     public AdminCustomerTest() throws MalformedURLException {
     }
@@ -25,11 +27,17 @@ public class AdminCustomerTest extends BaseTest {
     }
 
 
-    @Test(dataProvider = "createCustomer", dataProviderClass = Dataproviders.class)
-    public void testCreateCustomer(String email_data, String domain, String password_key){
+    @Test
+    public void testCreateCustomer(){
+        String email_data = "user_mail";
+        String domain = "@admin.com";
+        String password_key = "P@$$w0rd";
         AdminDeleteUser createCustomer = new AdminDeleteUser(driver);
-        int rn = (int) (Math.random()*100);
-        Assert.assertEquals(createCustomer.createUser(email_data+rn+domain, password_key), "×\n" +"Changes saved successfully");
+        int i;
+        for (i=0; i<5; i++){
+        long rn = (int) currentTimeMillis();
+        Assert.assertEquals(createCustomer.createUser(email_data+rn+domain, password_key), String.format("×\nChanges saved successfully"));
+        }
     }
 
     @Test
@@ -41,7 +49,7 @@ public class AdminCustomerTest extends BaseTest {
     @Test
     public void testDisableUser(){
         AdminDeleteUser disableCustomer = new AdminDeleteUser(driver);
-        int rn = (int) (Math.random()*100);
+        long rn = (int) currentTimeMillis();
         disableCustomer.createUser("number"+rn+"@admin.com", "Password");
         Assert.assertEquals(disableCustomer.disableUser(), true);
     }

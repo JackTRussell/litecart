@@ -3,10 +3,14 @@ package litecart.tests;
 import litecart.pages.CreateAccountPage;
 import litecart.pages.MainPage;
 import litecart.util.Dataproviders;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.net.MalformedURLException;
+
+import static java.lang.System.currentTimeMillis;
+import static org.testng.Assert.assertEquals;
 
 public class ShopUsersTest extends BaseTest {
 
@@ -17,7 +21,7 @@ public class ShopUsersTest extends BaseTest {
     @Parameters("browser")
     public void init(@Optional("chrome") String browser){
         setupBrowser(browser);
-    }
+        }
 
     @BeforeMethod
     public void openPage(){
@@ -30,8 +34,8 @@ public class ShopUsersTest extends BaseTest {
         MainPage signIn = new MainPage(driver);
         signIn.createAccount();
         CreateAccountPage addUser = new CreateAccountPage(driver);
-        int rn = (int) (Math.random()*100);
-        Assert.assertEquals(addUser.createUser(rn+email_adress+rn+domain, password_key), "×\n" +
+        int rn = (int) currentTimeMillis();
+        assertEquals(addUser.createUser(email_adress+rn+domain, password_key), "×\n" +
                 "Your customer account has been created.");
         signIn.logOut();
         signIn.openAddUser();
@@ -40,11 +44,11 @@ public class ShopUsersTest extends BaseTest {
     public void testLogin(){
         MainPage logIn = new MainPage(driver);
         logIn.createAccount();
-        int rn = (int) (Math.random()*100);
+        int rn = (int) currentTimeMillis();
         CreateAccountPage addUser = new CreateAccountPage(driver);
         addUser.createUser("login"+rn+"@user.com", "Password");
         logIn.logOut();
-        Assert.assertEquals(logIn.logIn("login"+rn+"@user.com", "Password"), "×\n" + "You are now logged in as Username UserLastname.");
+        assertEquals(logIn.logIn("login"+rn+"@user.com", "Password"), "×\n" + "You are now logged in as Username UserLastname.");
         logIn.logOut();
         logIn.openAddUser();
 
@@ -54,10 +58,10 @@ public class ShopUsersTest extends BaseTest {
     public void testLogout(){
         MainPage logOut = new MainPage(driver);
         logOut.createAccount();
-        int rn = (int) (Math.random()*100);
+        int rn = (int) currentTimeMillis();
         CreateAccountPage addUser = new CreateAccountPage(driver);
         addUser.createUser("logout"+rn+"@user.com", "Password");
-        Assert.assertEquals(logOut.logOut(), "×\n" + "You are now logged out.");
+        assertEquals(logOut.logOut(), "×\n" + "You are now logged out.");
         logOut.openAddUser();
 
     }
@@ -65,7 +69,7 @@ public class ShopUsersTest extends BaseTest {
      @Test
      public void testInvalidUser(){
         MainPage invalidUser = new MainPage(driver);
-        Assert.assertEquals(invalidUser.logIn("trdt@fhd.com", "jgjfdyt"), "×\n" +"Wrong password or the account does not exist");
+        assertEquals(invalidUser.logIn("trdt@fhd.com", "jgjfdyt"), "×\n" +"Wrong password or the account does not exist");
         invalidUser.openAddUser();
      }
 
@@ -74,7 +78,7 @@ public class ShopUsersTest extends BaseTest {
         MainPage sameUser = new MainPage(driver);
         sameUser.createAccount();
         CreateAccountPage createUser = new CreateAccountPage(driver);
-        int rn = (int) (Math.random()*100);
+        int rn = (int) currentTimeMillis();
         createUser.createUser("sameuser"+rn+"@user.com", "Password");
         sameUser.logOut();
         sameUser.openAddUser().createAccount();
@@ -88,14 +92,14 @@ public class ShopUsersTest extends BaseTest {
         MainPage emptyUser = new MainPage(driver);
         emptyUser.createAccount();
         CreateAccountPage createUser = new CreateAccountPage(driver);
-        Assert.assertEquals(createUser.emptyUser(), "http://localhost:1234/litecart/en/create_account");
+        assertEquals(createUser.emptyUser(), "http://localhost:1234/litecart/en/create_account");
         emptyUser.openAddUser();
     }
 
     @Test
     public void testLoginEmptyUser(){
         MainPage  emptyUser = new MainPage(driver);
-        Assert.assertEquals(emptyUser.logInEmpty(), "http://localhost:1234/litecart/en/");
+        assertEquals(emptyUser.logInEmpty(), "http://localhost:1234/litecart/en/");
         emptyUser.openAddUser();
     }
 
@@ -104,7 +108,7 @@ public class ShopUsersTest extends BaseTest {
         MainPage signIn = new MainPage(driver);
         signIn.createAccount();
         CreateAccountPage addUser = new CreateAccountPage(driver);
-        Assert.assertEquals(addUser.createUserWithInvalidEmail("qwerty", "Password"),"http://localhost:1234/litecart/en/create_account");
+        assertEquals(addUser.createUserWithInvalidEmail("qwerty", "Password"),"http://localhost:1234/litecart/en/create_account");
         signIn.openAddUser();
     }
 
@@ -113,8 +117,8 @@ public class ShopUsersTest extends BaseTest {
         MainPage signIn = new MainPage(driver);
         signIn.createAccount();
         CreateAccountPage addUser = new CreateAccountPage(driver);
-        int rn = (int) (Math.random()*100);
-        //assertEquals(addUser.createUserByEnter("number8@user.com", "password"), "Your customer account has been created successfully");
+        int rn = (int) currentTimeMillis();
+        //assertEquals(addUser.createUserByEnter("number"+rn+"@user.com", "password"), "Your customer account has been created successfully");
         addUser.createUserByEnter("number"+rn+"7@user.com", "password");
         signIn.logOut();
         signIn.openAddUser();
@@ -124,25 +128,25 @@ public class ShopUsersTest extends BaseTest {
     @Test (groups = "gui")
     public void checkCategory(){
         MainPage checkCategory = new MainPage(driver);
-        Assert.assertEquals(checkCategory.getMenuElement(), "Subcategory");
+        assertEquals(checkCategory.getMenuElement(), "Subcategory");
     }
 
     @Test (groups = "gui")
     public void checkHomeButton(){
             MainPage checkHome = new MainPage(driver);
-            Assert.assertEquals(checkHome.homeButton(), "http://localhost:1234/litecart/en/");
+            assertEquals(checkHome.homeButton(), "http://localhost:1234/litecart/en/");
     }
 
     @Test (groups = "gui")
     public void checkManufactures(){
         MainPage checkManufactures = new MainPage(driver);
-        Assert.assertEquals(checkManufactures.manufactures(), "ACME Corp.");
+        assertEquals(checkManufactures.manufactures(), "ACME Corp.");
     }
 
     @Test (groups = "gui")
     public void checkCart(){
         MainPage checkCart = new MainPage(driver);
-        Assert.assertEquals(checkCart.shoppingCart(), "http://localhost:1234/litecart/en/checkout");
+        assertEquals(checkCart.shoppingCart(), "http://localhost:1234/litecart/en/checkout");
     }
 
     @Test (groups = "gui")
